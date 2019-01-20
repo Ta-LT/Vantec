@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja" style="overflow-y:hidden;">
+    <!-- begin::Head -->
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            vantec
+        </title>
+        <meta name="description" content="Latest updates and statistic charts">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no,maximum-scale=1.0, user-scalable=no">
+                    <!--begin::Web font -->
+                    <!--end::Web font -->
+                    <!--begin::Base Styles -->
+                    <!--begin::Page Vendors -->
+                    <link href="assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+                    <!--end::Page Vendors -->
+                    <link href="assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+                    <link href="assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+                    <link href="top.css" rel="stylesheet" type="text/css" />
+                    <!--end::Base Styles -->
+                    <link rel="shortcut icon" href="assets/demo/default/media/img/logo/favicon.ico" />
+                    <link href="animations.css" rel="stylesheet">
+    </head>
+    <!-- end::Head -->
+    <!-- end::Body -->
+    <body class="m-page--fluid m--skin- m-content--skin-light2 m-aside-left--skin-dark m-aside--offcanvas-default">
+        <!-- begin:: Page -->
+        <!-- begin::Body -->
+        <!-- start:: page_login -->
+        <div id="page_login" class="m-grid m-grid--hor m-grid--root m-page pt-page-scaleUpCenter pt-page-delay400">
+            <div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--singin m-login--2 m-login-2--skin-3" id="m_login" style="background-image: url(assets/app/media/img/bg/bg-3.jpg);">
+                <div class="m-grid__item m-grid__item--fluid    m-login__wrapper">
+                    <div class="m-login__container">
+                        <div class="m-login__logo">
+                            <a href="#">
+                                <img src="VantecLogo.png">
+                                    </a>
+                        </div>
+                        <div class="m-login__signin">
+                            <div class="m-login__head">
+                                <h3 class="m-login__title">
+                                    ログイン画面
+                                </h3>
+                            </div>
+                            <form class="m-login__form m-form">
+                                <div class="form-group m-form__group">
+                                    <input class="form-control m-input" type="text" placeholder="ID" id="id" name="id" autocomplete="off">
+                                        </div>
+                                <div class="form-group m-form__group">
+                                    <input class="form-control m-input" type="password" placeholder="Password" id="password" name="password">
+                                        </div>
+                                <div class="m-login__form-action">
+                                    <button type="button" id="m_login_signin_submit" onclick="$(this).addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);login(this);" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air  m-login__btn">
+                                        Log In
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end:: page_login -->
+        <!-- start:: page_top -->
+        <div class="m-grid__item m-grid__item--fluid m-wrapper" style="height:100%">
+            <div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="height:100%">
+                <div id="header" class="m-stack__item m-stack__item--left m-stack__item--middle">
+                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                        <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="width:15%;">
+                            <div class="btn m-btn--air m-btn--pill btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;" onclick="Classification.jumpPageTo(1);$(this).css('background-color','#007fe0');$(this).css('border-color', '#007fe0');">
+                                <i class="fa fa-chevron-circle-left" style="font-size: large;"></i>
+                                <span>
+                                    戻る
+                                </span>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                            <span class="main-title" style="font-size:x-large;">
+                                作業区分画面
+                            </span>
+                        </div>
+                        <div class="m-stack__item m-stack__item--right m-stack__item--middle" style="width:15%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="m-stack__item m-stack__item--center m-stack__item--middle" style="height: 85%;background-image:url('assets/app/media/img/bg/bg-3.jpg');background-size:auto;">
+                    <div id="content" style="height:100%;overflow-x:hidden;">
+                    </div>
+                </div>
+                <div id="footer" class="m-stack__item m-stack__item--center m-stack__item--middle" style="height: 15%;">
+                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                            <button type="button" class="btn m-btn m-btn--pill m-btn--air m-btn--gradient-from-accent m-btn--gradient-to-success" onclick="Classification.jumpPageTo(0)">
+                                <span>
+                                    <i class="fa flaticon-light"></i>
+                                    <span>
+                                        業務終了
+                                    </span>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                            <button type="button" class="btn m-btn m-btn--pill m-btn--air m-btn--gradient-from-metal m-btn--gradient-to-accent" onclick="">
+                                <span>
+                                    <i class="fa flaticon-interface-6"></i>
+                                    <span>
+                                        日報出力
+                                    </span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                            <button type="button" class="btn m-btn m-btn--pill m-btn--air m-btn--gradient-from-brand m-btn--gradient-to-info" onclick="Classification.jumpPageTo(6);">
+                                <span>
+                                    <i class="fa flaticon-information"></i>
+                                    <span>
+                                        実績一覧
+                                    </span>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                            <button type="button" class="btn m-btn m-btn--pill m-btn--air m-btn--gradient-from-focus m-btn--gradient-to-danger" onclick="Classification.jumpPageTo(3);">
+                                <span>
+                                    <i class="fa flaticon-dashboard"></i>
+                                    <span>
+                                        設定
+                                    </span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end:: page_top -->
+        <!-- end:: Body -->
+        <!--begin::Base Scripts -->
+        <script src="assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+        <script src="assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
+        <!--end::Base Scripts -->
+        <!--begin::Page Vendors -->
+        <script src="assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
+        <!--end::Page Vendors -->
+        <!--begin::Page Snippets -->
+        <script src="assets/app/js/dashboard.js" type="text/javascript"></script>
+        <!--end::Page Snippets -->
+        <script src="login.js" type="text/javascript"></script>
+        <script src="top.js" type="text/javascript"></script>
+        
+        <script>
+            function callFromSwift(msg){
+                $("#title1").html(msg)
+            }
+        $("#btn1").click(function(){
+                         window.webkit.messageHandlers.loginClick.postMessage({key:"1",value:"業務終了"});
+                         });
+                         
+                         $("#btn2").click(function(){
+                                          window.webkit.messageHandlers.callFromBtn2.postMessage({key:"2",value:"日報出力"});
+                                          });
+            </script>
+    </body>
+    <!-- end::Body -->
+</html>
+

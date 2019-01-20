@@ -1,0 +1,90 @@
+
+
+#page_count_numtype_edit .m-stack.m-stack--general.m-stack--ver.m-stack--demo.m-stack--demorow {
+    height: 20%;
+}
+
+#page_count_numtype_edit td {
+    font-size: 2rem;
+}
+
+#page_count_numtype_edit .dropdown-toggle,
+#page_count_numtype_edit .dropdown-menu {
+    font-size: 1.5rem;
+}
+
+#page_count_numtype_edit .main-btn {
+    height: 90%;
+    width: 90%;
+    word-break: break-all;
+    white-space: normal;
+    overflow: hidden;
+    padding: 0.5em !important;
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+#page_count_numtype_edit .m-stack__item.m-stack__item--center.m-stack__item--middle table {
+    height: 100%;
+    width: 100%;
+}
+
+#page_count_numtype_edit .m-stack--demo.m-stack--ver .m-stack__item, .m-stack--demo.m-stack--hor .m-stack__demo-item {
+    border-width: 0px;
+    background:unset;
+}
+
+
+#page_count_numtype_edit .input-group {
+    height:80%;
+}
+
+#page_count_numtype_edit .btn.m-btn--gradient-from-accent.m-btn--gradient-to-success,
+#page_count_numtype_edit .btn.m-btn--gradient-from-metal.m-btn--gradient-to-accent,
+#page_count_numtype_edit .btn.m-btn--gradient-from-brand.m-btn--gradient-to-info,
+#page_count_numtype_edit .btn.m-btn--gradient-from-focus.m-btn--gradient-to-danger {
+    background:none;
+    background-color:#2F75B5;
+}
+
+#page_count_numtype_edit .btn-outline-brand:hover {
+    background-color: #2F75B5;
+    border-color: #2F75B5;
+}
+
+#page_count_numtype_edit .btn-outline-brand:active,
+#page_count_numtype_edit .btn-outline-brand.active,
+#page_count_numtype_edit .show > .btn-outline-brand.dropdown-toggle {
+    color: #ffffff;
+    background-color: #2F75B5;
+    border-color: #2F75B5;
+}
+
+#page_count_numtype_edit .btn-outline-brand {
+    color: #2F75B5;
+    border-color: #2F75B5;
+}
+
+#page_count_numtype_edit .btn.m-btn--gradient-from-metal {
+    color:#FFFFFF;
+}
+#page_count_numtype_edit .btn-accent,
+#page_count_numtype_edit .btn-accent:hover {
+    
+    background-color:#2F75B5;
+    border-color:#2F75B5;
+}
+#page_count_numtype_edit .btn.m-btn--pill {
+    border-radius:5px;
+}
+
+#page_count_numtype_edit .btn-outline-info:hover {
+    background-color: #2F75B5;
+    border-color: #2F75B5;
+}
+
+#page_count_numtype_edit .btn-outline-info, {
+    border-color: #2F75B5;
+}
+

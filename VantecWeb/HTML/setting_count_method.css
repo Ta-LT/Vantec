@@ -1,0 +1,96 @@
+#page_setting_count_method .m-stack.m-stack--general.m-stack--ver.m-stack--demo.m-stack--demorow {
+    height: 10%;
+    background: unset;
+}
+#page_setting_count_method .main-btn {
+/*    height: 120%;*/
+    width: 80%;
+    word-break: break-all;
+    white-space: normal;
+    overflow: hidden;
+    padding: 5px;
+    vertical-align: middle;
+    text-align: center;
+}
+/**
+.btn-outline-primary.m-btn--air.focus, .btn-outline-primary.m-btn--air:focus, .btn-outline-primary.m-btn--air:hover, .btn-primary.m-btn--air.focus, .btn-primary.m-btn--air:focus, .btn-primary.m-btn--air:hover, .m-btn--gradient-from-primary.m-btn--air.focus, .m-btn--gradient-from-primary.m-btn--air:focus, .m-btn--gradient-from-primary.m-btn--air:hover {
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(88, 103, 221, 0.8);
+    -moz-box-shadow: 0px 5px 10px 2px rgba(88, 103, 221, 0.8);
+    box-shadow: 0px 5px 10px 2px rgba(88, 103, 221, 0.8);
+}**/
+
+#page_setting_count_method .btn-outline-primary.select {
+    color: #ffffff;
+    background-color: #2F75B5;
+    border-color: #2F75B5;
+}
+
+#page_setting_count_method .btn-outline-primary {
+    color: #2F75B5;
+    border-color: #2F75B5;
+}
+
+#page_setting_count_method .m-stack__item.m-stack__item--center.m-stack__item--middle table {
+    height: 100%;
+    width: 100%;
+}
+
+#page_setting_count_method .m-stack--demo.m-stack--ver .m-stack__item, .m-stack--demo.m-stack--hor .m-stack__demo-item {
+    border-width: 0px;
+    background: unset;
+}
+
+#page_setting_count_method .main-btn table {
+    font-size: large;
+}
+
+#page_setting_count_method .btn-group .btn.active {
+    font-size: large;
+}
+
+#page_setting_count_method .time-row {
+    width: 80%;
+    border: solid 2px #2F75B5;
+    margin: auto;
+    font-size: medium;
+    border-radius: 0.25rem;
+}
+
+#page_setting_count_method .time-row > label {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+
+#page_setting_count_method .time-row > div {
+        flex: 0 0 75%;
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+
+#page_setting_count_method .btn.m-btn--gradient-from-accent.m-btn--gradient-to-success,
+#page_setting_count_method .btn.m-btn--gradient-from-metal.m-btn--gradient-to-accent,
+#page_setting_count_method .btn.m-btn--gradient-from-brand.m-btn--gradient-to-info,
+#page_setting_count_method .btn.m-btn--gradient-from-focus.m-btn--gradient-to-danger {
+    background:none;
+    background-color:#007fe0;
+}
+#page_setting_count_method .btn.m-btn--gradient-from-metal {
+    color:#FFFFFF;
+}
+
+#page_setting_count_method .btn-accent, .btn-accent:hover {
+    background-color:#2F75B5;
+    border-color:#2F75B5;
+}
+#page_setting_count_method .btn.m-btn--pill {
+    border-radius:5px;
+}
+
+#page_setting_count_method .btn-outline-info:hover {
+    background-color: #2F75B5;
+    border-color: #2F75B5;
+}
+
+#page_setting_count_method .btn-outline-info, {
+    border-color: #2F75B5;
+}

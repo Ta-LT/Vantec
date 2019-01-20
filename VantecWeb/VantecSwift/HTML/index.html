@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="ja" style="overflow-y:hidden;">
+	<!-- begin::Head -->
+	<head>
+		<meta charset="utf-8" />
+		<title>
+			vantec
+		</title>
+		<meta name="description" content="Latest updates and statistic charts">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no,maximum-scale=1.0, user-scalable=no">
+		<link href="assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Page Vendors -->
+		<link href="assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Base Styles -->
+		<link rel="shortcut icon" href="assets/demo/default/media/img/logo/favicon.ico" />
+		<link href="animations.css" rel="stylesheet">
+		<link href="index.css" rel="stylesheet" type="text/css" />
+		<link href="top.css" rel="stylesheet" type="text/css" />
+		<link href="login.css" rel="stylesheet" type="text/css" />
+        <link href="customer.css" rel="stylesheet" type="text/css" />
+        <link href="customer_edit.css" rel="stylesheet" type="text/css" />
+		<link href="setting.css" rel="stylesheet" type="text/css" />
+		<link href="setting_count_type.css" rel="stylesheet" type="text/css" />
+		<link href="setting_count_method.css" rel="stylesheet" type="text/css" />
+        <link href="results.css" rel="stylesheet" type="text/css" />
+        <link href="count_tabtype.css" rel="stylesheet" type="text/css" />
+        <link href="count_numtype.css" rel="stylesheet" type="text/css" />
+        <link href="count_scantype.css" rel="stylesheet" type="text/css" />
+        <link href="count_tabtype_edit.css" rel="stylesheet" type="text/css" />
+        <link href="count_numtype_edit.css" rel="stylesheet" type="text/css" />
+        <link href="count_scantype_edit.css" rel="stylesheet" type="text/css" />
+        <link href="bc_check.css" rel="stylesheet" type="text/css" />
+        <link href="top_edit.css" rel="stylesheet" type="text/css" />
+        <link href="top_h.css" rel="stylesheet" type="text/css" />
+        <link href="top_h_edit.css" rel="stylesheet" type="text/css" />
+	</head>
+	<!-- end::Head -->
+	<!-- begin::Body -->
+	<body class="m-page--fluid m--skin- m-content--skin-light2 m-aside-left--skin-dark m-aside--offcanvas-default">
+        <div id="div_voice_tost" class="m-alert m-alert--icon m-alert--outline alert alert-primary" role="alert" style="margin: 5%;position: fixed;bottom: 0;z-index: 999;display:none">
+        </div>
+        <div id="div_alert" class="m-alert m-alert--icon m-alert--outline alert alert-primary" role="alert" style="margin: 5%;position: fixed;bottom: 5%;z-index: 999;display:none">
+            <div class="m-alert__icon">
+                <i class="la la-warning"></i>
+            </div>
+            <div class="m-alert__text">
+                <strong id="txt_alert_message"></strong>
+            </div>
+        </div>
+        <div id="div_results_alert" style="display:none">
+            <div class="m-alert m-alert--icon m-alert--outline alert alert-primary" role="alert" style="margin: 5%;position: fixed;bottom: 0;z-index: 999;">
+                <div class="m-alert__icon">
+                    <i class="la la-warning"></i>
+                </div>
+                <div class="m-alert__text" style="width:100%;font-size:1.4rem;">
+                    <strong></strong>
+                </div>
+                <div class="m-alert__actions" style="padding: 1.45rem 1.25rem;">
+                    <button id="btn_results_alert_del" type="button" class="btn btn-danger btn-sm" style="margin:5px 0px 5px 0px;min-width:80px;font-size:1.3rem;" LanguageKey="MOBILEUSER_YES">
+                        はい
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm" style="margin:5px 0px 5px 0px;min-width:80px;font-size:1.3rem;" onclick="$('#div_results_alert').slideUp()" LanguageKey="MOBILEUSER_NO">
+                        いいえ
+                    </button>
+                </div>
+            </div>
+            <div style="z-index: 998;border: none;margin: 0px;padding: 0px;width: 100%;height: 100%;top: 0px;left: 0px;background-color: rgb(0, 0, 0);opacity: 0.5;cursor: wait;position: fixed;"></div>
+        </div>
+		<!-- begin:: page_login -->
+		<div id="page_login" class="m-grid m-grid--hor m-grid--root m-page" style="display:none">
+			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--singin m-login--2 m-login-2--skin-3" style="">
+				<div class="m-grid__item m-grid__item--fluid	m-login__wrapper">
+					<div class="m-login__container">
+						<div class="m-login__logo">
+<!--                            <span style="font-size:30px;">TimeBird【TEST】</span>-->
+                            <span style="font-size:30px;">TimeBird</span>
+						</div>
+						<div class="m-login__signin">
+							<div class="m-login__head">
+								<h3 class="m-login__title" style="color:#2F75B5;">
+									Login
+								</h3>
+							</div>
+							<form class="m-login__form m-form" action="" style="max-width:85%;">
+								<div class="form-group m-form__group">
+									<input style="border:2px solid #2f75b5;background:white;border-radius:0.25rem;max-height:50px;" class="form-control m-input"   type="text" placeholder="ID" id="txt_userid" name="id" autocomplete="off">
+								</div>
+								<div class="form-group m-form__group">
+									<input style="border:2px solid #2f75b5;background:white;border-radius:0.25rem;max-height:50px;"  class="form-control m-input m-login__form-input--last" type="password" placeholder="Password" id="txt_password" name="password">
+								</div>
+                                <!--div class="form-group m-form__group">
+                                    <input id="dp_login_worktime" style="border:2px solid #2f75b5;background:white;border-radius:0.25rem;max-height:50px;" class="form-control m-input m-login__form-input--last" type="text" placeholder="WorkDate" name="password" readonly>
+                                </div-->
+								<div class="m-login__form-action">
+									<button id="m_login_signin_submit" onclick="$(this).addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);" class="btn btn-primary m-btn m-btn--custom m-login__btn" style="background-color:#2f75b5;border:2px solid #2f75b5;">
+										Log In
+									</button>
+								</div>
+                                <div class="m-login__form-action">
+                                    <label class="m-checkbox m-checkbox--state-brand">
+                                        <input id="cb_login_remember_id" type="checkbox" name="check" onclick="$(this).attr('checked', true);">
+                                            <span></span>
+                                            Remember ID
+                                            </label>
+                                </div>
+                            </form>
+						</div>
+					</div>
+				</div>
+                <div id="txt_version" class="m-login__foot" style=" text-align: right;">
+                    <h5 class="m-login__title">
+                    </h5>
+                </div>
+			</div>
+		</div>
+		<!-- end:: page_login -->
+		<!-- begin: page_customer -->
+		<div id="page_customer" class="m-grid__item m-grid__item--fluid m-wrapper" style="height:100%;display:none">
+			<div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="height:100%">
+				<div class="m-stack__item m-stack__item--left m-stack__item--middle header">
+					<div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+						<div class="m-stack__item m-stack__item--left m-stack__item--middle">
+						</div>
+						<div class="m-stack__item m-stack__item--center m-stack__item--middle">
+						<span class="main-title" style="font-size:x-large;" LanguageKey="MOBILEUSER_CUSROMERSEL">
+							顧客選択
+						</span>
+						</div>
+						<div class="m-stack__item m-stack__item--right m-stack__item--middle">
+							<!--div id="btn_close_customer" class="btn m-btn--air btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: medium;">
+								<span LanguageKey="MOBILEUSER_CLOSE">
+									閉じる
+								</span>
+								<i class="fa fa-close" style="font-size: large;"></i>
+							</div-->
+						</div>
+					</div>
+				</div>
+				<div class="m-stack__item m-stack__item--center m-stack__item--middle" style="height: auto;background-color:#ffffff;background-size:auto;">
+					<div id="content_customer" style="height:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling: touch;">
+					</div>
+				</div>
+			</div>
+		</div>
+        <!-- end:: page_customer -->
+        <!-- begin: page_customer_edit -->
+        <div id="page_customer_edit" class="m-grid__item m-grid__item--fluid m-wrapper" style="height:100%;display:none">
+            <div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="height:100%">
+                <div class="m-stack__item m-stack__item--left m-stack__item--middle header">
+                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                        <div class="m-stack__item m-stack__item--left m-stack__item--middle">
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                            <span class="main-title" style="font-size:x-large;" LanguageKey="MOBILEUSER_CUSROMERSEL">
+                                顧客選択
+                            </span>
+                        </div>
+                        <div class="m-stack__item m-stack__item--right m-stack__item--middle">
+                            <div id="btn_close_customer_edit" class="btn m-btn--air btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: medium;">
+                                <span LanguageKey="MOBILEUSER_CLOSE">
+                                    閉じる
+                                </span>
+                                <i class="fa fa-close" style="font-size: large;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-stack__item m-stack__item--center m-stack__item--middle" style="height: auto;background-color:#ffffff;background-size:auto;">
+                    <div id="content_customer_edit" style="height:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling: touch;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end:: page_customer_edit -->
+		<!-- begin:: page_count_numtype -->
+		<div id="page_count_numtype" class="m-grid__item m-grid__item--fluid m-wrapper" style="height:100%;display:none;">
+			<div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="height:100%">
+				<div class="m-stack__item m-stack__item--left m-stack__item--middle header">
+					<div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                        <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="width:25%;">
+                            <div id="btn_back_count_numtype" class="btn m-btn--air m-btn--pill btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;">
+                                <i class="fa fa-chevron-circle-left" style="font-size: large;"></i>
+                                <span LanguageKey="MOBILEUSER_BACK">
+                                    戻る
+                                </span>
+                            </div>
+                        </div>
+						<div class="m-stack__item m-stack__item--center m-stack__item--middle">
+							<span class="main-title workkbn-name" style="font-size:x-large;" LanguageKey="MOBILEUSER_NUMBEINPUT">
+								数量入力
+							</span>
+						</div>
+                        <div class="m-stack__item m-stack__item--right m-stack__item--middle" style="width:25%;">
+                            <span class="main-title customer-name">
+                            </span>
+                        </div>
+					</div>
+				</div>
+				<div class="m-stack__item m-stack__item--center m-stack__item--middle" style="height: auto;background-color:#FFFFFF;background-size:auto;">
+					<div style="height:100%;overflow-y:auto;">
+						<div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+							<div class="m-stack__item m-stack__item--center m-stack__item--middle">
+								<div style="color:red;display:none;"></div>
+								<div class="input-group">
+									<input id="txt_count_numtype_num" type="text" class="form-control" style="font-size: 3rem;" aria-label="Text input with dropdown button" value="0">
+									<div class="input-group-btn" style="height:100%;">
+										<button id="btn_count_numtype_practical" type="button" class="btn btn-outline-brand dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:100%;">
+											<span LanguageKey="MOBILEUSER_UNIT">単位</span>
+										</button>
+										<div id="dpd_count_numtype_practical" class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 37px, 0px); top: 0px; left: 0px; will-change: transform;">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+							<div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+								<div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_calculator_num">
+									<table>
+										<tr>
+											<td>
+												1
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+								<div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_calculator_num">
+									<table>
+										<tr>
+											<td>
+												2
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+								<div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_calculator_num">
+									<table>
+										<tr>
+											<td>
+												3
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+								<div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_calculator_num">
+									<table>
+										<tr>
+											<td>
+												4
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+								<div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_calculator_num">
+									<table>
+										<tr>
+											<td>
+												5
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+								<div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_calculator_num">
+									<table>
+										<tr>
+											<td>
+												6
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+								<div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_calculator_num">
+									<table>
+										<tr>
+											<td>
+												7
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+								<div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_calculator_num">
+									<table>
+										<tr>
+											<td>
+												8
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+								<div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_calculator_num">
+									<table>
+										<tr>
+											<td>
+												9
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+								<div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_calculator_num">
+									<table>
+										<tr>
+											<td>
+												0
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+								<div id="btn_count_numtype_calculator_del" class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn">
+									<table>
+										<tr>
+											<td>
+												C
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+								<div id="btn_close_count_numtype" class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn">
+									<table>
+										<tr>
+											<td style="font-size:2rem;" LanguageKey="MOBILEUSER_DECIDE">
+												決定
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        <!-- end: page_count_numtype -->
+        <!-- begin:: page_count_numtype_edit -->
+        <div id="page_count_numtype_edit" class="m-grid__item m-grid__item--fluid m-wrapper" style="height:100%;display:none;">
+            <div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="height:100%">
+                <div class="m-stack__item m-stack__item--left m-stack__item--middle header">
+                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                        <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="width:25%;">
+                            <div id="btn_back_count_numtype_edit" class="btn m-btn--air m-btn--pill btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;">
+                                <i class="fa fa-chevron-circle-left" style="font-size: large;"></i>
+                                <span LanguageKey="MOBILEUSER_BACK">
+                                    戻る
+                                </span>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                            <span class="main-title" style="font-size:x-large;" LanguageKey="MOBILEUSER_NUMBEINPUT">
+                                数量入力
+                            </span>
+                        </div>
+                        <div class="m-stack__item m-stack__item--right m-stack__item--middle" style="width:25%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="m-stack__item m-stack__item--center m-stack__item--middle" style="height: auto;background-color:#FFFFFF;background-size:auto;">
+                    <div style="height:100%;overflow-y:auto;">
+                        <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                            <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                                <div style="color:red;display:none;"></div>
+                                <div class="input-group">
+                                    <input id="txt_count_numtype_edit_num" type="text" class="form-control" style="font-size: 3rem;" aria-label="Text input with dropdown button" value="0">
+                                        <div class="input-group-btn" style="height:100%;">
+                                            <button id="btn_count_numtype_edit_practical" type="button" class="btn btn-outline-brand dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:100%;">
+                                                <span LanguageKey="MOBILEUSER_UNIT">単位</span>
+                                            </button>
+                                            <div id="dpd_count_numtype_edit_practical" class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 37px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+                            <div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_edit_calculator_num">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            1
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+                            <div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_edit_calculator_num">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            2
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+                            <div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_edit_calculator_num">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            3
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+                            <div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_edit_calculator_num">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            4
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+                            <div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_edit_calculator_num">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            5
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+                            <div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_edit_calculator_num">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            6
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+                            <div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_edit_calculator_num">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            7
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+                            <div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_edit_calculator_num">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            8
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+                            <div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_edit_calculator_num">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            9
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+                            <div class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn btn_count_numtype_edit_calculator_num">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            0
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+                            <div id="btn_count_numtype_edit_calculator_del" class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            C
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle calculator">
+                            <div id="btn_close_count_numtype_edit" class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn">
+                                <table>
+                                    <tr>
+                                        <td style="font-size:2rem;" LanguageKey="MOBILEUSER_DECIDE">
+                                            決定
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end: page_count_numtype_edit -->
+		<!-- begin:: page_count_tabtype -->
+		<div id="page_count_tabtype" class="m-grid__item m-grid__item--fluid m-wrapper" style="height:100%;display:none;">
+			<div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="height:100%">
+				<div class="m-stack__item m-stack__item--left m-stack__item--middle header">
+					<div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                        <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="width:25%;">
+                            <div id="btn_back_count_tabtype" class="btn m-btn--air m-btn--pill btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;">
+                                <i class="fa fa-chevron-circle-left" style="font-size: large;"></i>
+                                <span LanguageKey="MOBILEUSER_BACK">
+                                    戻る
+                                </span>
+                            </div>
+                        </div>
+						<div class="m-stack__item m-stack__item--center m-stack__item--middle">
+							<span class="main-title workkbn-name" style="font-size:x-large;" LanguageKey="MOBILEUSER_COUNTER">
+								カウンター
+							</span>
+						</div>
+                        <div class="m-stack__item m-stack__item--right m-stack__item--middle" style="width:25%;">
+                            <span class="main-title customer-name">
+                            </span>
+                        </div>
+					</div>
+				</div>
+				<div class="m-stack__item m-stack__item--center m-stack__item--middle" style="height: auto;background-color:#FFFFFF;background-size:auto;">
+					<div style="height:100%;overflow-y:auto;overflow-x:hidden;">
+						<div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+							<div class="m-stack__item m-s
+                                tack__item--center m-stack__item--middle">
+								<div class="input-group">
+                                    <input id="txt_count_tabtype_num" type="text" class="form-control" style="font-size:3rem;" aria-label="Text input with dropdown button" value="0">
+									<div class="input-group-btn" style="height:100%;">
+										<button id="btn_count_tabtype_practical" type="button" class="btn btn-outline-brand dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:100%;" LanguageKey="MOBILEUSER_UNIT">単位
+										</button>
+										<div id="dpd_count_tabtype_practical" class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 37px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                            <span class="dropdown-item">個</span>
+                                            <span class="dropdown-item">ケース</span>
+                                            <span class="dropdown-item">箱</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+							<div class="m-stack__item m-stack__item--center m-stack__item--middle">
+								<div id="btn_count_tabtype_plus" class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn">
+									<table>
+										<tr>
+											<td>
+												<i class="fa fa-plus" style="font-size: x-large;"></i>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="m-stack__item m-stack__item--center m-stack__item--middle">
+								<div id="btn_count_tabtype_minus" class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn">
+									<table>
+										<tr>
+											<td>
+												<i class="fa fa-minus" style="font-size: x-large;"></i>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+							<div class="m-stack__item m-stack__item--center m-stack__item--middle">
+								<div class="form-group m-form__group row time-row" style="margin-bottom: 0;">
+									<div style="margin: auto;height:100%;">
+										<input id="txt_count_tabtype_increment" type="text" class="form-control" value="0" name="demo1" placeholder="">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+							<div class="m-stack__item m-stack__item--center m-stack__item--middle" style="width:33.33%">
+							</div>
+							<div class="m-stack__item m-stack__item--center m-stack__item--middle" style="width:66.66%">
+								<div id="btn_close_count_tabtype" class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn">
+									<table>
+										<tr>
+											<td LanguageKey="MOBILEUSER_DECIDE">
+												決定
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        <!-- end: page_count_tabtype -->
+        <!-- begin:: page_count_tabtype_edit -->
+        <div id="page_count_tabtype_edit" class="m-grid__item m-grid__item--fluid m-wrapper" style="height:100%;display:none;overflow: hidden;">
+            <div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="height:100%">
+                <div class="m-stack__item m-stack__item--left m-stack__item--middle header">
+                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                        <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="width:25%;">
+                            <div id="btn_back_count_tabtype_edit" class="btn m-btn--air m-btn--pill btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;">
+                                <i class="fa fa-chevron-circle-left" style="font-size: large;"></i>
+                                <span LanguageKey="MOBILEUSER_BACK">
+                                    戻る
+                                </span>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                            <span class="main-title" style="font-size:x-large;" LanguageKey="MOBILEUSER_COUNTER">
+                                カウンター
+                            </span>
+                        </div>
+                        <div class="m-stack__item m-stack__item--right m-stack__item--middle" style="width:25%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="m-stack__item m-stack__item--center m-stack__item--middle" style="height: auto;background-color:#FFFFFF;background-size:auto;">
+                    <div style="height:100%;overflow:hidden;">
+                        <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                            <div class="m-stack__item m-s
+                                tack__item--center m-stack__item--middle">
+                                <div class="input-group">
+                                    <input id="txt_count_tabtype_edit_num" type="text" class="form-control" style="font-size:3rem;" aria-label="Text input with dropdown button" value="0">
+                                    <div class="input-group-btn" style="height:100%;">
+                                        <button id="btn_count_tabtype_edit_practical" type="button" class="btn btn-outline-brand dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:100%;" LanguageKey="MOBILEUSER_UNIT">単位
+                                        </button>
+                                        <div id="dpd_count_tabtype_edit_practical" class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 37px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                            <span class="dropdown-item">個</span>
+                                            <span class="dropdown-item">ケース</span>
+                                            <span class="dropdown-item">箱</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                            <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                                <div id="btn_count_tabtype_edit_plus" class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <i class="fa fa-plus" style="font-size: x-large;"></i>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                                <div id="btn_count_tabtype_edit_minus" class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <i class="fa fa-minus" style="font-size: x-large;"></i>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                            <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                                <div class="form-group m-form__group row time-row" style="margin-bottom: 0;">
+                                    <div style="margin: auto;height:100%;">
+                                        <input id="txt_count_tabtype_edit_increment" type="text" class="form-control" value="0" name="demo1" placeholder="">
+                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                            <div class="m-stack__item m-stack__item--center m-stack__item--middle" style="width:33.33%">
+                            </div>
+                            <div class="m-stack__item m-stack__item--center m-stack__item--middle" style="width:66.66%">
+                                <div id="btn_close_count_tabtype_edit" class="btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn">
+                                    <table>
+                                        <tr>
+                                            <td LanguageKey="MOBILEUSER_DECIDE">
+                                                決定
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end: page_count_tabtype_edit -->
+        <!-- begin:: page_count_scantype -->
+        <div id="page_count_scantype" class="m-grid__item m-grid__item--fluid m-wrapper" style="height:100%;display:none;">
+            <div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="height:100%;">
+                <div class="m-stack__item m-stack__item--left m-stack__item--middle header">
+                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                        <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="width:25%;">
+                            <div id="btn_close_count_scantype" class="btn m-btn--air m-btn--pill btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;">
+                                <i class="fa fa-chevron-circle-left" style="font-size: large;"></i>
+                                <span LanguageKey="MOBILEUSER_BACK">
+                                    戻る
+                                </span>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                            <span class="main-title workkbn-name" style="font-size:x-large;" LanguageKey="MOBILEUSER_KEYSCAN">
+                                Key番号スキャン
+                            </span>
+                        </div>
+                        <div class="m-stack__item m-stack__item--right m-stack__item--middle" style="width:25%;">
+                            <span class="main-title customer-name">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-stack__item m-stack__item--center m-stack__item--middle m-stack__item--fluid" style="background-color:#FFFFFF;background-size:auto;">
+                    <div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="padding:5%;">
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle" style="/* height: 100px; */">
+                            <div class="input-group">
+                                <input id="txt_count_scantype_text" type="text" class="form-control" aria-label="Text input with dropdown button" style="font-size: 3rem;">
+                                <input id="txt_count_scantype_text_proxy" type="password" class="form-control input-proxy" aria-label="Text input with dropdown button">
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle m-stack__item--fluid">
+                            <div id="content_count_scantype" style="height:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling: touch;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end: page_count_scantype -->
+        <!-- begin:: page_count_scantype_edit -->
+        <div id="page_count_scantype_edit" class="m-grid__item m-grid__item--fluid m-wrapper" style="height:100%;display:none;">
+            <div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="height:100%;">
+                <div class="m-stack__item m-stack__item--left m-stack__item--middle header">
+                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                        <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="width:25%;">
+                            <div id="btn_close_count_scantype_edit" class="btn m-btn--air m-btn--pill btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;">
+                                <i class="fa fa-chevron-circle-left" style="font-size: large;"></i>
+                                <span LanguageKey="MOBILEUSER_BACK">
+                                    戻る
+                                </span>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                            <span id = "sp_count_scantype_edit_title" class="main-title" style="font-size:x-large;" LanguageKey="MOBILEUSER_KEYSCAN">
+                                Key番号スキャン
+                            </span>
+                        </div>
+                        <div class="m-stack__item m-stack__item--right m-stack__item--middle" style="width:25%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="m-stack__item m-stack__item--center m-stack__item--middle m-stack__item--fluid" style="background-color:#FFFFFF;background-size:auto;">
+                    <div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="padding:5%;">
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle" style="/* height: 100px; */">
+                            <div class="input-group">
+                                <input id="txt_count_scantype_edit_text" type="text" class="form-control" aria-label="Text input with dropdown button" style="font-size: 3rem;">
+                                <input id="txt_count_scantype_edit_text_proxy" type="password" class="form-control input-proxy" aria-label="Text input with dropdown button">
+                                    </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle m-stack__item--fluid">
+                            <div id="content_count_scantype_edit" style="height:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling: touch;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end: page_count_scantype_edit -->
+        <!-- begin:: page_bc_check -->
+        <div id="page_bc_check" class="m-grid__item m-grid__item--fluid m-wrapper" style="height:100%;display:none;">
+            <div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="height:100%;">
+                <div class="m-stack__item m-stack__item--left m-stack__item--middle header">
+                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                        <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="width:25%;">
+                            <div id="btn_close_bc_check" class="btn m-btn--air m-btn--pill btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;">
+                                <i class="fa fa-chevron-circle-left" style="font-size: large;"></i>
+                                <span LanguageKey="MOBILEUSER_BACK">
+                                    戻る
+                                </span>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                            <span id="sp_bc_check_type" class="sp-bc-check main-title" style="font-size:x-large;">
+                            </span>
+                        </div>
+                        <div class="m-stack__item m-stack__item--right m-stack__item--middle" style="width:25%;">
+                            <span class="sp-bc-check main-title workkbn-name">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-stack__item m-stack__item--center m-stack__item--middle m-stack__item--fluid" style="background-color:#FFFFFF;background-size:auto;">
+                    <div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="padding:5%;">
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle" style="height: 60%;">
+                            <div class="m-stack__item m-stack__item--right m-stack__item--middle">
+                                <span id="sp_bc_check_title1" class="sp-bc-check">
+                                    バーコード１をスキャン
+                                </span>
+                            </div>
+                            <div class="input-group">
+                                <input id="txt_bc_check_code1" type="text" class="form-control" aria-label="Text input with dropdown button" style="font-size: 3rem;">
+                                <input id="txt_bc_check_code1_proxy" type="password" class="form-control input-proxy" aria-label="Text input with dropdown button">
+                            </div>
+                            <div class="m-stack__item m-stack__item--right m-stack__item--middle">
+                                <span id="sp_bc_check_title2" class="sp-bc-check"  style="margin-top: 30px;">
+                                    バーコード２をスキャン
+                                </span>
+                            </div>
+                            <div class="input-group">
+                                <input id="txt_bc_check_code2" type="text" class="form-control" aria-label="Text input with dropdown button" style="font-size: 3rem;">
+                                <input id="txt_bc_check_code2_proxy" type="password" class="form-control input-proxy" aria-label="Text input with dropdown button">
+                            </div>
+                        </div>
+                        <div id="div_bc_check_content" class="m-stack__item m-stack__item--center m-stack__item--middle m-stack__item--fluid">
+                            <button id="btn_cb_check_result" type="button" class="btn m-btn m-btn--pill m-btn--air m-btn--gradient-from-accent m-btn--gradient-to-success" style="height:50%;width:50%;font-size:40px;color:red;">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end: page_bc_check -->
+		<!-- begin:: page_setting -->
+	    <div id="page_setting" class="m-grid__item m-grid__item--fluid m-wrapper" style="height:100%;display:none;">
+	        <div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="height:100%">
+	            <div class="m-stack__item m-stack__item--center m-stack__item--middle" style="height: 85%;background-color:#FFFFFF;background-size:auto;">
+	                <div style="height:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling: touch;">
+	                    <div class="m-stack__item m-stack__item--left m-stack__item--middle header">
+	                        <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+	                            <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="width:15%;">
+	                                <div id="btn_close_setting" class="btn m-btn--air m-btn--pill btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;">
+	                                    <i class="fa fa-chevron-circle-left" style="font-size: large;"></i>
+	                                    <span LanguageKey="MOBILEUSER_BACK">
+	                                        戻る
+	                                    </span>
+	                                </div>
+	                            </div>
+	                            <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+	                                <span class="main-title" style="font-size:x-large;" LanguageKey="MOBILEUSER_SETSCREEN">
+	                                    設定画面
+	                                </span>
+	                            </div>
+	                            <div class="m-stack__item m-stack__item--right m-stack__item--middle" style="width:15%;">
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+	                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+	                            <div id="btn_open_setting_count_type" class="btn btn-primary m-btn m-btn--bolder main-btn">
+	                                <table>
+	                                    <tr>
+	                                        <td>
+	                                            <span>
+	                                                <span LanguageKey="MOBILEUSER_INPUTRRECORD">
+	                                                    実績入力
+	                                                </span>
+	                                                <i class="fa fa-forward" style="float:right;padding:  3px;"></i>
+	                                            </span>
+	                                        </td>
+	                                    </tr>
+	                                </table>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+	                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+	                            <div class="btn-group" data-toggle="buttons">
+	                                <label class="btn m-btn--pill m-btn--air btn-warning rb_setting_direction">
+	                                    <input type="radio" name="options" autocomplete="off" checked="">
+	                                    <span LanguageKey="MOBILEUSER_VERTICAL">縦表示</span>
+	                                </label>
+	                                <label class="btn m-btn--pill m-btn--air btn-warning rb_setting_direction">
+	                                    <input type="radio" name="options" autocomplete="off">
+	                                    <span LanguageKey="MOBILEUSER_LATERAL">横表示</span>
+	                                </label>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+	                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+	                            <div id="btn_open_setting_count_method" class="btn btn-primary m-btn m-btn--bolder main-btn">
+	                                <table>
+	                                    <tr>
+	                                        <td>
+	                                            <span>
+	                                                <span LanguageKey="MOBILEUSER_MEASURE">
+	                                                    計測方法
+	                                                </span>
+	                                                <i class="fa fa-forward" style="float:right;padding:  3px;"></i>
+	                                            </span>
+	                                        </td>
+	                                    </tr>
+	                                </table>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+		<!-- end: page_setting -->
+		<!-- begin:: page_setting_count_type -->
+	    <div id="page_setting_count_type" class="m-grid__item m-grid__item--fluid m-wrapper" style="height:100%;display:none;">
+	        <div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="height:100%">
+	            <div class="m-stack__item m-stack__item--center m-stack__item--middle" style="height: 85%;background-color:#FFFFFF;background-size:auto;">
+	                <div style="height:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling: touch;">
+	                    <div class="m-stack__item m-stack__item--left m-stack__item--middle header">
+	                        <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+	                            <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="width:15%;">
+	                                <div id="btn_close_setting_count_type" class="btn m-btn--air m-btn--pill btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;">
+	                                    <i class="fa fa-chevron-circle-left" style="font-size: large;"></i>
+	                                    <span LanguageKey="MOBILEUSER_BACK">
+	                                        戻る
+	                                    </span>
+	                                </div>
+	                            </div>
+	                            <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+	                                <span class="main-title" style="font-size:x-large;" LanguageKey="MOBILEUSER_INPUTRRECORD">
+	                                    実績入力
+	                                </span>
+	                            </div>
+	                            <div class="m-stack__item m-stack__item--right m-stack__item--middle" style="width:15%;">
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+	                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+	                            <div class="btn m-btn--air btn-outline-primary m-btn m-btn--bolder m-btn--custom m-btn--outline-2x main-btn btn_setting_count_type">
+	                                <table>
+	                                    <tr>
+	                                        <td>
+	                                            <span>
+	                                                <span LanguageKey="MOBILEUSER_NOMEASURE">
+	                                                    実績入力なし
+	                                                </span>
+	                                            </span>
+	                                        </td>
+	                                    </tr>
+	                                </table>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+	                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+	                            <div class="btn m-btn--air btn-outline-primary m-btn m-btn--bolder m-btn--custom m-btn--outline-2x main-btn btn_setting_count_type">
+	                                <table>
+	                                    <tr>
+	                                        <td>
+	                                            <span>
+	                                                <span LanguageKey="MOBILEUSER_NUMBERMEASURE">
+	                                                    実績入力あり(数字入力方式)
+	                                                </span>
+	                                            </span>
+	                                        </td>
+	                                    </tr>
+	                                </table>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+	                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+	                            <div class="btn m-btn--air btn-outline-primary m-btn m-btn--bolder m-btn--custom m-btn--outline-2x main-btn btn_setting_count_type">
+	                                <table>
+	                                    <tr>
+	                                        <td>
+	                                            <span>
+	                                                <span LanguageKey="MOBILEUSER_ACCOUNTMEASURE">
+	                                                    実績入力あり(カウンター方式)
+	                                                </span>
+	                                            </span>
+	                                        </td>
+	                                    </tr>
+	                                </table>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+	                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+	                            <div class="btn m-btn--air btn-outline-primary m-btn m-btn--bolder m-btn--custom m-btn--outline-2x main-btn btn_setting_count_type">
+	                                <table>
+	                                    <tr>
+	                                        <td>
+	                                            <span>
+	                                                <span LanguageKey="MOBILEUSER_KEYSCAN">
+	                                                    Key番号スキャン
+	                                                </span>
+	                                            </span>
+	                                        </td>
+	                                    </tr>
+	                                </table>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+		<!-- end: page_setting_count_type -->
+		<!-- begin:: page_setting_count_method -->
+	    <div id="page_setting_count_method" class="m-grid__item m-grid__item--fluid m-wrapper" style="height:100%;display:none;">
+	        <div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="height:100%">
+	            <div class="m-stack__item m-stack__item--center m-stack__item--middle" style="height: 85%;background-color:#FFFFFF;background-size:auto;">
+	                <div style="height:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling: touch;">
+	                    <div class="m-stack__item m-stack__item--left m-stack__item--middle header">
+	                        <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+	                            <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="width:15%;">
+	                                <div id="btn_close_setting_count_method" class="btn m-btn--air m-btn--pill btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;">
+	                                    <i class="fa fa-chevron-circle-left" style="font-size: large;"></i>
+	                                    <span LanguageKey="MOBILEUSER_BACK">
+	                                        戻る
+	                                    </span>
+	                                </div>
+	                            </div>
+	                            <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+	                                <span class="main-title" style="font-size:x-large;" LanguageKey="MOBILEUSER_MEASURE">
+	                                    計測方法
+	                                </span>
+	                            </div>
+	                            <div class="m-stack__item m-stack__item--right m-stack__item--middle" style="width:15%;">
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+	                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+	                            <div class="btn m-btn--air btn-outline-primary m-btn m-btn--bolder m-btn--custom m-btn--outline-2x main-btn btn_setting_count_method">
+	                                <table>
+	                                    <tr>
+	                                        <td>
+	                                            <span>
+	                                                <span LanguageKey="MOBILEUSER_STARTMODE">
+	                                                    開始指定モード
+	                                                </span>
+	                                            </span>
+	                                        </td>
+	                                    </tr>
+	                                </table>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+	                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+	                            <div class="btn m-btn--air btn-outline-primary m-btn m-btn--bolder m-btn--custom m-btn--outline-2x main-btn btn_setting_count_method">
+	                                <table>
+	                                    <tr>
+	                                        <td>
+	                                            <span>
+	                                                <span LanguageKey="MOBILEUSER_INTERVALMODE">
+	                                                    一定間隔モード
+	                                                </span>
+	                                            </span>
+	                                        </td>
+	                                    </tr>
+	                                </table>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+	                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+	                            <div class="form-group m-form__group row time-row">
+	                                <label class="col-form-label" style="margin-top:1%" LanguageKey="MOBILEUSER_TIME">
+	                                    時間
+	                                </label>
+	                                <div>
+	                                    <input id="txt_setting_count_method_time" type="text" class="form-control" value="0" name="demo1" placeholder="Select time" type="text">
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+                        <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                            <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                                <div class="form-group m-form__group row time-row">
+                                    <label class="col-form-label" style="margin-top:1%" LanguageKey="MOBILEUSER_SOUND">
+                                        通知音
+                                    </label>
+                                    <div class="btn-group" style="height:100%;">
+                                        <button id="btn_setting_count_method_alarm" type="button" class="btn btn-outline-brand dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:100%;width:100%;">
+                                            <span LanguageKey="MOBILEUSER_SOUNDSEL">通知音選択</span>
+                                        </button>
+                                        <div id="dpd_setting_count_method_alarm" class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 37px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+	                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow radioBtn">
+	                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+	                            <div class="btn-group" data-toggle="buttons">
+	                                <label class="btn m-btn--pill m-btn--air btn-warning rb_setting_count_method_notice">
+	                                    <input type="radio" name="options" autocomplete="off" checked="">
+	                                    <span LanguageKey="MOBILEUSER_VOICEOFF">通知音OFF</span>
+	                                </label>
+	                                <label class="btn m-btn--pill m-btn--air btn-warning rb_setting_count_method_notice">
+	                                    <input type="radio" name="options" autocomplete="off">
+	                                    <span LanguageKey="MOBILEUSER_VOICEON">通知音ON</span>
+	                                </label>
+	                            </div>
+	                        </div>
+	                    </div>
+                        <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow radioBtn" style="display:none">
+	                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+	                            <div class="btn-group" data-toggle="buttons">
+	                                <label class="btn m-btn--pill m-btn--air btn-warning rb_setting_count_method_pipe">
+	                                    <input type="radio" name="options" autocomplete="off" checked="">
+	                                    <span>バイブON</span>
+	                                </label>
+	                                <label class="btn m-btn--pill m-btn--air btn-warning rb_setting_count_method_pipe">
+	                                    <input type="radio" name="options" autocomplete="off">
+	                                    <span>バイブOFF</span>
+	                                </label>
+	                            </div>
+	                        </div>
+                        </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+		<!-- end: page_setting_count_method -->
+        <!-- begin:: page_results -->
+        <div id="page_results" class="m-stack m-stack--hor m-stack--general m-stack--demo" style="height:100%;display:none;">
+            <div class="m-stack__item m-stack__item--left m-stack__item--middle header">
+                <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                    <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="width:25%;">
+                        <div id="btn_close_results" class="btn m-btn--air m-btn--pill btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;">
+                            <i class="fa fa-chevron-circle-left" style="font-size: large;"></i>
+                            <span LanguageKey="MOBILEUSER_BACK">
+                                戻る
+                            </span>
+                        </div>
+                    </div>
+                    <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                        <span class="main-title" style="font-size:x-large;" LanguageKey="MOBILEUSER_MEASURELIST">
+                            実績一覧
+                        </span>
+                    </div>
+                    <div id="btn_results_senddata" class="m-stack__item m-stack__item--right m-stack__item--middle" style="width:25%;">
+                        <div class="btn m-btn--air btn-warning m-btn btn-sm" style="text-align: left;width:auto;font-size: large;">
+                            <i class="fa fa-cloud-upload" style="font-size: large;"></i>
+                            <span LanguageKey="MOBILEUSER_TRANSMISSION">
+                                送信
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-stack__item m-stack__item--center m-stack__item--middle m-stack__item--fluid" style="background-color:#FFFFFF;background-size:auto;">
+                <div class="m-stack m-stack--hor m-stack--general m-stack--demo">
+                    <div class="m-stack__item m-stack__item--center m-stack__item--middle m-stack__item--fluid">
+                        <div id="content_results" style="height:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling: touch;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-stack__item m-stack__item--left m-stack__item--middle footer">
+                <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                    <div class="m-stack__item m-stack__item--left m-stack__item--middle">
+                        <div id="btn_results_selectall" class="btn m-btn--air btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;">
+                            <span LanguageKey="MOBILEUSER_ALLSEL">全選択</span>
+                        </div>
+                    </div>
+                    <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                        
+                    </div>
+                    <div class="m-stack__item m-stack__item--right m-stack__item--middle">
+                        <div id="btn_results_delete" class="btn m-btn--air btn-warning m-btn btn-sm" style="text-align: left;width:auto;font-size: large;">
+                            <i class="fa fa-trash" style="font-size: large;"></i>
+                            <span LanguageKey="MOBILEUSER_DETELE">削除</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end: page_results -->
+        <!-- begin:: page_top -->
+        <div id="page_top" class="m-grid__item m-grid__item--fluid m-wrapper" style="height:100%;display:none;">
+            <div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="height:100%">
+                <div class="m-stack__item m-stack__item--left m-stack__item--middle header">
+                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                        <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="width:25%;">
+                            <div id="btn_top_customer_open" class="btn m-btn--air m-btn--pill btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;" onclick="$(this).css('background-color','#2F75B5');$(this).css('border-color', '#2F75B5');">
+                                <span LanguageKey="MOBILEUSER_CUSROMERSEL">
+                                    顧客選択
+                                </span>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                            <span class="main-title" style="font-size:x-large;" LanguageKey="MOBILEUSER_WORKKBN">
+                                作業区分
+                            </span>
+                        </div>
+                        <div class="m-stack__item m-stack__item--right m-stack__item--middle" style="width:25%;">
+                            <span class="main-title customer-name">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-stack__item m-stack__item--center m-stack__item--middle" style="height: 70%;background-color:#ffffff;background-size:auto;">
+                    <div id="content_top" style="height:100%;overflow-y:scroll;overflow-x:hidden;-webkit-overflow-scrolling:touch;">
+                    </div>
+                </div>
+                <div class="m-stack__item m-stack__item--center m-stack__item--middle footer" style="height: 25%;">
+                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow" style="height: 60%;">
+                        <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="padding: 10px 10px 5px 10px;">
+                            <button id="btn_logout" type="button" class="btn m-btn m-btn--pill m-btn--air m-btn--gradient-from-accent m-btn--gradient-to-success" style="background-color: yellow;color: black;">
+                                <span LanguageKey="MOBILEUSER_BUSSINESSEND">
+                                    業務終了
+                                </span>
+                            </button>
+                        </div>
+                        <div id="div_bc_check" class="m-stack__item m-stack__item--center m-stack__item--middle" style="padding: 10px 10px 5px 10px;">
+                            <button id="btn_bc_check" type="button" class="btn m-btn m-btn--pill m-btn--air m-btn--gradient-from-accent m-btn--gradient-to-success" style="background-size: contain;
+                                background-position: center;
+                                background-color: white;
+                                background-repeat: no-repeat;background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAC9CAIAAAAV0/e+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAF62lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDIgNzkuMTYwOTI0LCAyMDE3LzA3LzEzLTAxOjA2OjM5ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgKFdpbmRvd3MpIiB4bXA6Q3JlYXRlRGF0ZT0iMjAxOC0wNy0wNFQxNTozMjoyMSswODowMCIgeG1wOk1vZGlmeURhdGU9IjIwMTgtMDctMDRUMTU6NDg6NTQrMDg6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMTgtMDctMDRUMTU6NDg6NTQrMDg6MDAiIGRjOmZvcm1hdD0iaW1hZ2UvcG5nIiBwaG90b3Nob3A6Q29sb3JNb2RlPSIzIiBwaG90b3Nob3A6SUNDUHJvZmlsZT0ic1JHQiBJRUM2MTk2Ni0yLjEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ZmVlMzcwMjItMmJiYy0xZTQy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);">
+                            </button>
+                        </div>
+                        <div class="m-stack__item m-stack__item--right m-stack__item--middle" style="padding: 10px 10px 5px 10px;">
+                            <button id="btn_report_output" type="button" class="btn m-btn m-btn--pill m-btn--air m-btn--gradient-from-metal m-btn--gradient-to-accent">
+                                <span LanguageKey="MOBILEUSER_PRINTDAILY">
+                                    日報
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow" style="height: 40%;">
+                        <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="padding: 5px 10px 10px 10px;">
+                            <button id="btn_open_results" type="button" class="btn m-btn m-btn--pill m-btn--air m-btn--gradient-from-brand m-btn--gradient-to-info">
+                                <span LanguageKey="MOBILEUSER_MEASURELIST">
+                                        実績一覧
+                                </span>
+                            </button>
+                        </div>
+                        <!--div class="m-stack__item m-stack__item--center m-stack__item--middle" style="padding: 5px 10px 10px 10px;">
+                        </div-->
+                        <div class="m-stack__item m-stack__item--right m-stack__item--middle" style="padding: 5px 10px 10px 10px;">
+                            <button id="btn_open_setting" type="button" class="btn m-btn m-btn--pill m-btn--air m-btn--gradient-from-focus m-btn--gradient-to-danger">
+                                <span LanguageKey="MOBILEUSER_SETTING">
+                                        設定
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end:: page_top -->
+        <!-- begin:: page_top_edit -->
+        <div id="page_top_edit" class="m-grid__item m-grid__item--fluid m-wrapper" style="height:100%;display:none;">
+            <div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="height:100%">
+                <div class="m-stack__item m-stack__item--left m-stack__item--middle header">
+                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                        <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="width:25%;">
+                            <div id="btn_close_top_edit" class="btn m-btn--air m-btn--pill btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;">
+                                <i class="fa fa-chevron-circle-left" style="font-size: large;"></i>
+                                <span LanguageKey="MOBILEUSER_BACK">
+                                    戻る
+                                </span>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                            <span class="main-title" style="font-size:x-large;" LanguageKey="SPARE_SPARE1">
+                                作業区分修正
+                            </span>
+                        </div>
+                        <div class="m-stack__item m-stack__item--right m-stack__item--middle" style="width:25%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="m-stack__item m-stack__item--center m-stack__item--middle" style="height: 85%;background-color:#ffffff;background-size:auto;">
+                    <div id="content_top_edit" style="height:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling: touch;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end:: page_top_edit -->
+        <!-- begin:: page_top_h -->
+        <div id="page_top_h" class="m-grid__item m-grid__item--fluid m-wrapper" style="height:100%;display:none;">
+            <div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="height:100%">
+                <div class="m-stack__item m-stack__item--left m-stack__item--middle header">
+                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                        <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="width:25%;">
+                            <div id="btn_top_h_customer_open" class="btn m-btn--air btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;">
+                                <span LanguageKey="MOBILEUSER_CUSROMERSEL">
+                                    顧客選択
+                                </span>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle" style="width:70%;">
+                            <span class="main-title" style="font-size:x-large;" LanguageKey="MOBILEUSER_WORKKBN">
+                                作業区分
+                            </span>
+                        </div>
+                        <div class="m-stack__item m-stack__item--right m-stack__item--middle" style="width:25%;">
+                            <span class="main-title customer-name">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-stack__item m-stack__item--center m-stack__item--middle" style="height: 85%;">
+                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow" style="height: 100%;">
+                        <div class="m-stack__item" style="width:85%;">
+                            <div id="content_top_h" style="height:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling: touch;">
+                            </div>
+                        </div>
+                        <div class="m-stack__item" style="width:15%;padding:0;">
+                            <div class="m-stack__item m-stack__item--center m-stack__item--middle footer" style="height: 100%;padding:0">
+                                <div class="m-stack m-stack--hor m-stack--general m-stack--demo m-stack--demorow">
+                                    <div id="btn_logout_h" class="m-stack__item m-stack__item--center m-stack__item--middle">
+                                        <button type="button" class="btn m-btn m-btn--pill m-btn--air m-btn--gradient-from-metal m-btn--gradient-to-accent" style="background-color: yellow;color: black;">
+                                            <div LanguageKey="MOBILEUSER_BUSSINESSEND">
+                                                業務終了
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div id="btn_report_output_h" class="m-stack__item m-stack__item--center m-stack__item--middle">
+                                        <button type="button" class="btn m-btn m-btn--pill m-btn--air m-btn--gradient-from-metal m-btn--gradient-to-accent">
+                                            <div LanguageKey="MOBILEUSER_PRINTDAILY">
+                                                日報出力
+                                            </div>
+                                        </button>
+                                    </div>
+                                    
+                                    <div id="div_bc_check_h" class="m-stack__item m-stack__item--center m-stack__item--middle" style="height: 12%;">
+                                        <button id="btn_bc_check_h" type="button" class="btn m-btn m-btn--pill m-btn--air m-btn--gradient-from-metal m-btn--gradient-to-accent" style="background-size: contain;
+                                            background-position: center;
+                                            background-color: white;
+                                            background-repeat: no-repeat;background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAC9CAIAAAAV0/e+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAF62lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDIgNzkuMTYwOTI0LCAyMDE3LzA3LzEzLTAxOjA2OjM5ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgKFdpbmRvd3MpIiB4bXA6Q3JlYXRlRGF0ZT0iMjAxOC0wNy0wNFQxNTozMjoyMSswODowMCIgeG1wOk1vZGlmeURhdGU9IjIwMTgtMDctMDRUMTU6NDg6NTQrMDg6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMTgtMDctMDRUMTU6NDg6NTQrMDg6MDAiIGRjOmZvcm1hdD0iaW1hZ2UvcG5nIiBwaG90b3Nob3A6Q29sb3JNb2RlPSIzIiBwaG90b3Nob3A6SUNDUHJvZmlsZT0ic1JHQiBJRUM2MTk2Ni0yLjEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ZmVlMzcwMjItMmJiYy0xZTQy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);">
+                                        </button>
+                                    </div>
+                                    <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                                        <button id="btn_open_results_h" type="button" class="btn m-btn m-btn--pill m-btn--air m-btn--gradient-from-metal m-btn--gradient-to-accent">
+                                            <div LanguageKey="MOBILEUSER_MEASURELIST">
+                                                実績一覧
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                                        <button id="btn_open_setting_h" type="button" class="btn m-btn m-btn--pill m-btn--air m-btn--gradient-from-metal m-btn--gradient-to-accent">
+                                            <div LanguageKey="MOBILEUSER_SETTING">
+                                                   設定　</div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end:: page_top_h -->
+        <!-- begin:: page_top_h_edit -->
+        <div id="page_top_h_edit" class="m-grid__item m-grid__item--fluid m-wrapper" style="height:100%;display:none;">
+            <div class="m-stack m-stack--hor m-stack--general m-stack--demo" style="height:100%">
+                <div class="m-stack__item m-stack__item--left m-stack__item--middle header">
+                    <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
+                        <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="width:25%;">
+                            <div id="btn_close_top_h_edit" class="btn m-btn--air m-btn--pill btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;">
+                                <i class="fa fa-chevron-circle-left" style="font-size: large;"></i>
+                                <span LanguageKey="MOBILEUSER_BACK">
+                                    戻る
+                                </span>
+                            </div>
+                        </div>
+                        <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                            <span class="main-title" style="font-size:x-large;" LanguageKey="SPARE_SPARE1">
+                                作業区分
+                            </span>
+                        </div>
+                        <div class="m-stack__item m-stack__item--right m-stack__item--middle" style="width:25%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="m-stack__item m-stack__item--center m-stack__item--middle" style="height: 85%;background-color:#ffffff;background-size:auto;">
+                    <div id="content_top_h_edit" style="height:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling: touch;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end:: page_top_h_edit -->
+
+
+		<!--begin::Base Scripts -->
+		<script src="assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+		<script src="assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
+		<!--end::Base Scripts -->
+		<!--begin::Page Vendors -->
+		<script src="assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
+		<!--end::Page Vendors -->
+		<!--begin::Page Snippets -->
+		<script src="assets/app/js/dashboard.js" type="text/javascript"></script>
+        <!--end::Page Snippets -->
+        <script src="jquery.timers-1.2.js" type="text/javascript"></script>
+		<script src="index.js" type="text/javascript"></script>
+		<script src="login.js" type="text/javascript"></script>
+		<script src="top.js" type="text/javascript"></script>
+        <script src="customer.js" type="text/javascript"></script>
+        <script src="customer_edit.js" type="text/javascript"></script>
+		<script src="setting.js" type="text/javascript"></script>
+		<script src="setting_count_type.js" type="text/javascript"></script>
+		<script src="setting_count_method.js" type="text/javascript"></script>
+        <script src="results.js" type="text/javascript"></script>
+        <script src="count_numtype.js" type="text/javascript"></script>
+        <script src="count_tabtype.js" type="text/javascript"></script>
+        <script src="count_scantype.js" type="text/javascript"></script>
+        <script src="count_tabtype_edit.js" type="text/javascript"></script>
+        <script src="count_numtype_edit.js" type="text/javascript"></script>
+        <script src="count_scantype_edit.js" type="text/javascript"></script>
+        <script src="bc_check.js" type="text/javascript"></script>
+        <script src="top_edit.js" type="text/javascript"></script>
+	</body>
+	<!-- end::Body -->
+</html>
+

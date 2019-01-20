@@ -1,0 +1,93 @@
+#page_top_h_edit .main-btn {
+    height: 99%;
+    width: 99%;
+    word-break: break-all;
+    white-space: normal;
+    overflow: hidden;
+    padding: 0em !important;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 1.3em !important;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+
+#page_top_h_edit .main-btn i {
+    font-size: 8vw !important;
+    height: 60%;
+}
+
+#page_top_h_edit .main-btn p {
+        margin-bottom: 0 !important;
+        font-size: 2.5vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+
+#page_top_h_edit .main-btn .main-btn-outter {
+        display: table;
+        height: 100%;
+        width: 100%;
+    }
+
+#page_top_h_edit .main-btn .main-btn-inner {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+
+#page_top_h_edit table i {
+    font-size: 20vw !important;
+}
+
+#page_top_h_edit table p {
+    margin-bottom: 0 !important;
+    font-size: 5vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#page_top_h_edit table {
+    table-layout: fixed;
+    height: 100%;
+}
+
+#page_top_h_edit .btn-outline-primary.m-btn--air.focus, .btn-outline-primary.m-btn--air:focus, .btn-outline-primary.m-btn--air:hover, .btn-primary.m-btn--air.focus, .btn-primary.m-btn--air:focus, .btn-primary.m-btn--air:hover, .m-btn--gradient-from-primary.m-btn--air.focus, .m-btn--gradient-from-primary.m-btn--air:focus, .m-btn--gradient-from-primary.m-btn--air:hover {
+
+}
+
+#page_top_h_edit .m-stack__item.m-stack__item--center.m-stack__item--middle table {
+    height: 100%;
+    width: 100%;
+}
+
+#page_top_h_edit .m-stack--demo.m-stack--ver .m-stack__item, .m-stack--demo.m-stack--hor .m-stack__demo-item {
+    border-width: 0px;
+    background: unset;
+}
+
+#page_top_h_edit .btn.m-btn--gradient-from-accent.m-btn--gradient-to-success,
+.btn.m-btn--gradient-from-metal.m-btn--gradient-to-accent,
+.btn.m-btn--gradient-from-brand.m-btn--gradient-to-info,
+.btn.m-btn--gradient-from-focus.m-btn--gradient-to-danger {
+    background:none;
+    background-color:#2F75B5;
+}
+#page_top_h_edit .btn.m-btn--gradient-from-metal {
+    color:#FFFFFF;
+}
+#page_top_h_edit .btn-accent, .btn-accent:hover {
+
+    background-color:#2F75B5;
+    border-color:#2F75B5;
+}
+#page_top_h_edit .btn.m-btn--pill {
+    border-radius:5px;
+}

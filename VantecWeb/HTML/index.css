@@ -1,0 +1,107 @@
+body {
+    font-family:'Meiryo UI','メイリオ',Verdana,'ＭＳ Ｐゴシック',sans-serif;
+}
+
+.m-stack.m-stack--general.m-stack--ver.m-stack--demo.m-stack--demorow {
+    height: 25%;
+}
+p, span, td, input, button, .btn, .form-control
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6{
+    font-family:'Meiryo UI','メイリオ',Verdana,'ＭＳ Ｐゴシック',sans-serif;
+}
+.footer, .header {
+    background-image: url('assets/app/media/img/bg/bg-5.jpg');
+    background-size: cover;
+}
+
+.header span.main-title {
+    color: #000000;
+}
+.header span.customer-name{
+    font-size: large;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    white-space: nowrap;
+}
+.footer button {
+    min-width: 100%;
+	min-height: 120%;
+}
+.footer, .header {
+    background-image:none!important;
+    background-color:#D9D9D9!important;
+    color:#ffffff!important;
+}
+.mask{
+    position:absolute;
+    top:0px;
+    filter:alpha(opacity=60);
+    background-color:#777;
+    z-index:1002;
+    left;0px;
+    background:rgba(0,0,0,0.6);
+}
+.alert-alarm {
+    color: red;
+    background-color: yellow;
+    margin-bottom: 0px;
+    text-align: center;
+    position:absolute;
+    width:100%;
+    font-size:larger;
+}
+@media all and (orientation : landscape) {
+    #page_count_numtype .calculator,
+    #page_count_numtype_edit .calculator
+    {
+        width:21.8%;
+        height:19.8%;
+        float:left;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        margin-right: 9px;
+        margin-left: 9px;
+    }
+    #page_setting_count_method .radioBtn{
+/*        float:left;*/
+/*        width:50%;*/
+    }
+    #page_customer .customer-btn,
+    #page_customer_edit .customer-btn_edit {
+        width:17%;
+        height:27%;
+        float:left;
+        margin-top: 16px;
+        margin-bottom: 0px;
+        margin-right: 0px;
+        margin-left: 16px;
+    }
+}
+
+@media all and (orientation : portrait){
+    
+    #page_count_numtype .calculator,
+    #page_count_numtype_edit .calculator{
+        width:30%;
+        height:18%;
+        float:left;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+    #page_customer .customer-btn,
+    #page_customer_edit .customer-btn_edit{
+        width:30%;
+        height:18%;
+        float:left;
+        margin-top: 10px;
+        margin-bottom: 0px;
+        margin-right: 0px;
+        margin-left: 9.7px;
+    }
+}

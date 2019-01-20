@@ -1,0 +1,92 @@
+
+
+#page_count_tabtype .m-stack.m-stack--general.m-stack--ver.m-stack--demo.m-stack--demorow:first-child {
+    height: 20%;
+}
+#page_count_tabtype .m-stack.m-stack--general.m-stack--ver.m-stack--demo.m-stack--demorow {
+    height: 25%;
+}
+
+#page_count_tabtype td {
+    font-size: 2rem;
+}
+
+#page_count_tabtype .main-btn {
+/*    height: 75%;*/
+    width: 75%;
+    word-break: break-all;
+    white-space: normal;
+    overflow: hidden;
+    padding: 0.3em !important;
+    vertical-align: middle;
+    text-align: center;
+}
+#page_count_tabtype .form-control,
+#page_count_tabtype .btn,
+#page_count_tabtype .input-group-addon {
+    font-size: 2rem;
+}
+
+#page_count_tabtype .dropdown-toggle,
+#page_count_tabtype .dropdown-menu {
+    font-size: 1.5rem;
+}
+
+#page_count_tabtype .input-group .input-group-btn > .btn.btn-secondary {
+    border-color: #ebedf2;
+    height: 100%;
+}
+
+#page_count_tabtype .m-stack__item.m-stack__item--center.m-stack__item--middle table {
+    height: 100%;
+    width: 100%;
+}
+
+#page_count_tabtype .m-stack--demo.m-stack--ver .m-stack__item,
+#page_count_tabtype .m-stack--demo.m-stack--hor .m-stack__demo-item {
+    border-width: 0px;
+    background:unset;
+}
+
+#page_count_tabtype .input-group {
+    height:80%;
+}
+
+#page_count_tabtype .btn.m-btn--gradient-from-accent.m-btn--gradient-to-success,
+#page_count_tabtype .btn.m-btn--gradient-from-metal.m-btn--gradient-to-accent,
+#page_count_tabtype .btn.m-btn--gradient-from-brand.m-btn--gradient-to-info,
+#page_count_tabtype .btn.m-btn--gradient-from-focus.m-btn--gradient-to-danger {
+    background:none;
+    background-color:#007fe0;
+}
+#page_count_tabtype .btn-outline-brand:hover {
+    background-color: #2F75B5;
+    border-color: #2F75B5;
+}
+
+#page_count_tabtype .btn-outline-brand:active,
+#page_count_tabtype .btn-outline-brand.active,
+#page_count_tabtype .show > .btn-outline-brand.dropdown-toggle {
+    color: #ffffff;
+    background-color: #2F75B5;
+    border-color: #2F75B5;
+}
+
+#page_count_tabtype .btn-outline-brand {
+    color: #2F75B5;
+    border-color: #2F75B5;
+}
+
+#page_count_tabtype .btn.m-btn--gradient-from-metal {
+    color:#FFFFFF;
+}
+#page_count_tabtype .btn-accent,
+#page_count_tabtype .btn-accent:hover {
+    
+    background-color:#2F75B5;
+    border-color:#2F75B5;
+}
+#page_count_tabtype .btn.m-btn--pill {
+    border-radius:5px;
+}
+
