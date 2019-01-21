@@ -156,7 +156,14 @@ jQuery(document).ready(function() {
     $('#m_login_signin_submit').click(function (e) {
         var _this = this;
         login(_this);
-        parent.window.subframeLogedin($("#txt_userid").val(), $(window.frameElement));
+        if (!parent.window.subframeLogedin($("#txt_userid").val(), $(window.frameElement))) {
+            $("body").append($("<img/>").attr("src", "../workingpic.png").css({
+                "height": "100%",
+                "margin": "0 auto",
+                "z-index": "999"
+            }));
+            $("body > div").hide();
+        }
 	});
 //    $('#dp_login_worktime').datepicker({
 //        format: "yyyy-mm-dd",

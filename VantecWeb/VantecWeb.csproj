@@ -124,6 +124,7 @@
     <Content Include="HTML\assets\vendors\base\fonts\summernote\summernote.eot" />
     <Content Include="HTML\assets\vendors\base\fonts\summernote\summernote.ttf" />
     <Content Include="HTML\assets\vendors\base\fonts\summernote\summernote.woff" />
+    <Content Include="workingpic.png" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

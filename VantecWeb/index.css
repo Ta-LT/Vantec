@@ -3,6 +3,7 @@
     width: 100%;
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 
 body {
@@ -21,7 +22,7 @@ body {
 
 #maindiv {
     width: 100%;
-    margin-top: 10px;
+    padding-top: 10px;
     max-height: 126px;
     overflow-y: auto;
     background-color: #e4e4e4;

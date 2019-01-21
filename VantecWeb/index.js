@@ -10,12 +10,14 @@ function subframeLogedin(username, frameElement) {
     if ($("button.user[username='" + username + "']").length > 0) {
         $("button.user[username='" + username + "']").click();
         $(frameElement[0].contentWindow.document).find("button#m_login_signin_submit").attr("disabled", false);
+        return true;
     }
     else {
         $("button.user.selected").text(username).attr("username", username);
         frameElement.attr("username", username);
         $(frameElement[0].contentWindow.document).find("div.m-login__logo span").text(username);
         addNewloginFrame();
+        return false;
     }
 }
 function addNewloginFrame() {
