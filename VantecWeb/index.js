@@ -17,7 +17,16 @@ function subframeLogedin(username, frameElement) {
         frameElement.attr("username", username);
         $(frameElement[0].contentWindow.document).find("div.m-login__logo span").text(username);
         addNewloginFrame();
+        $("#usernamediv").text(username);
         return false;
+    }
+}
+function subframeLogedout(username, frameElement) {
+    if ($("button.user[username='" + username + "']").length > 0) {
+        $("button.user[username='" + username + "']").remove();
+        frameElement.remove();
+        $("button.user[username='']").click();
+        return true;
     }
 }
 function addNewloginFrame() {
@@ -27,6 +36,7 @@ function addNewloginFrame() {
         newUserloginButton.addClass("selected");
         $("#framescontainer iframe").hide();
         $("#framescontainer iframe[username='" + newUserloginButton.attr("username") + "']").show();
+        $("#usernamediv").text(newUserloginButton.attr("username"));
     });
     $("#maindiv").append(newUserloginButton);
     var newUserFrame = $("<iframe/>").attr("src", "./HTML/index.html").attr("username", "");

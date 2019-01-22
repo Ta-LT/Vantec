@@ -39,7 +39,7 @@ body {
     border-radius: 60px;
     -webkit-appearance: button;
     color: #5867dd;
-    background-color: lightgray;
+    background-color: white;
     background-image: none;
     border-color: #5867dd;
     display: inline-block;
@@ -75,3 +75,12 @@ body {
         width: 100%;
         position: absolute;
     }
+
+#usernamediv {
+    background-color: #5867dd;
+    color: white;
+    text-align: center;
+    height: auto;
+    font-size: 2.5em;
+    font-weight: 900;
+}
