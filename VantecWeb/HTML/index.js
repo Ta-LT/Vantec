@@ -49,7 +49,7 @@ function workStart(topText,topVal){
     if(window.webkit)
     {
         showBackDrop();
-        window.webkit.messageHandlers.WorkStart.postMessage({"newResultList":""+JSON.stringify(newResultList)+"","Transmission":""+loginJson.Result.mMobileSet.Transmission+""});
+        window.webkit.messageHandlers.WorkStart({"newResultList":""+JSON.stringify(newResultList)+"","Transmission":""+loginJson.Result.mMobileSet.Transmission+""});
     }
     
 }
@@ -74,7 +74,7 @@ function workEnd(){
         }
         if(window.webkit)
         {
-            window.webkit.messageHandlers.WorkEnd.postMessage({"mAccount_Id":""+loginJson.Result.mAccount.Id+"","data":""+JSON.stringify(sendResults)+"","Transmission":""+loginJson.Result.mMobileSet.Transmission+""});
+            window.webkit.messageHandlers.WorkEnd({"mAccount_Id":""+loginJson.Result.mAccount.Id+"","data":""+JSON.stringify(sendResults)+"","Transmission":""+loginJson.Result.mMobileSet.Transmission+""});
         }
         currentResult = undefined;
         tempScanResultList = [];
@@ -89,7 +89,7 @@ function showResultList(){
     showBackDrop();
     if(window.webkit)
     {
-       window.webkit.messageHandlers.ShowResultsList.postMessage({"mAccount_Id":""+loginJson.Result.mAccount.Id+"","WorkDate":""+workDate+""});
+       window.webkit.messageHandlers.ShowResultsList({"mAccount_Id":""+loginJson.Result.mAccount.Id+"","WorkDate":""+workDate+""});
     }
 }
 function showResultsListCallback(resultList){
@@ -107,7 +107,7 @@ function sendResultsToServer(resultList_update){
     showBackDrop();
     if(window.webkit)
     {
-        window.webkit.messageHandlers.SendResultsToServer.postMessage({"mAccount_Id":""+loginJson.Result.mAccount.Id+"","data":""+JSON.stringify(resultList_update)+""});
+        window.webkit.messageHandlers.SendResultsToServer({"mAccount_Id":""+loginJson.Result.mAccount.Id+"","data":""+JSON.stringify(resultList_update)+""});
     }
 }
 function sendResultsToServerCallback(result){
@@ -123,7 +123,7 @@ function removeResults(resultRemoveList){
     showBackDrop();
     if(window.webkit)
     {
-        window.webkit.messageHandlers.DeleteResults.postMessage({"mAccount_Id":""+loginJson.Result.mAccount.Id+"","data":""+JSON.stringify(resultRemoveList)+""});
+        window.webkit.messageHandlers.DeleteResults({"mAccount_Id":""+loginJson.Result.mAccount.Id+"","data":""+JSON.stringify(resultRemoveList)+""});
     }
 }
 function removeResultsCallback(result){
@@ -145,7 +145,7 @@ function dailyOutput(){
     showBackDrop();
     if(window.webkit)
     {
-        window.webkit.messageHandlers.DailyOutputClick.postMessage({"mAccount_Id":""+loginJson.Result.mAccount.Id+"","WorkDate":""+workDate+""});
+        window.webkit.messageHandlers.DailyOutputClick({"mAccount_Id":""+loginJson.Result.mAccount.Id+"","WorkDate":""+workDate+""});
     }
 }
 function dailyOutputCallback(result){
@@ -354,14 +354,14 @@ function playAlarm(soundCode,playTimes){
     
     if(window.webkit)
     {
-        window.webkit.messageHandlers.CallAlarm.postMessage({
+        window.webkit.messageHandlers.CallAlarm({
              "code":soundCode,
              "playTimes":playTimes
         });
     }
 }
 function playLocalAutio(fileName){
-    window.webkit.messageHandlers.PlayLocalAudio.postMessage({
+    window.webkit.messageHandlers.PlayLocalAudio({
              "fileName":fileName
     });
 }
@@ -466,7 +466,7 @@ function showMessage(messageText){
 //function saveCurrentResult(){
 //    if(window.webkit)
 //    {
-//        window.webkit.messageHandlers.SaveCurrentPageInfo.postMessage({"currentResult":JSON.stringify(currentResult),"loginJson":JSON.stringify(loginJson)});
+//        window.webkit.messageHandlers.SaveCurrentPageInfo({"currentResult":JSON.stringify(currentResult),"loginJson":JSON.stringify(loginJson)});
 //    }
 //}
 // page init when reactived

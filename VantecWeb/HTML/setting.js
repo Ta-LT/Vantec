@@ -12,7 +12,7 @@ function settingInit(){
         //call device method
         if(window.webkit)
         {
-          window.webkit.messageHandlers.ChangeRotation.postMessage({key:"mode",value:""+mode+""});
+          window.webkit.messageHandlers.ChangeRotation({key:"mode",value:""+mode+""});
         }
     });
     if(settingInfo.Horizontal != undefined){
@@ -29,7 +29,7 @@ $(function () {
         if(window.webkit){
             var userId = loginJson.Result.mAccount.Id;
             var settingsInfo = JSON.stringify(loginJson.Result.mMobileSet);
-            window.webkit.messageHandlers.SettingsChanged.postMessage({"userId":""+userId+"","settingsInfo":""+settingsInfo+""});
+            window.webkit.messageHandlers.SettingsChanged({"userId":""+userId+"","settingsInfo":""+settingsInfo+""});
         }
 		pageNavigation("page_setting",getTopPage());
 	});

@@ -47,8 +47,8 @@ function login(e) {
                 "Password": password
             }
             if (window.webkit) {
-                window.webkit.messageHandlers.LoginClick.postMessage(JSON.stringify(userInfo));
-                window.webkit.messageHandlers.RememberID.postMessage({ "userName": "" + id + "", "rememberIdFlg": "" + $("#cb_login_remember_id").is(":checked") + "" });
+                window.webkit.messageHandlers.LoginClick(JSON.stringify(userInfo));
+                window.webkit.messageHandlers.RememberID({ "userName": "" + id + "", "rememberIdFlg": "" + $("#cb_login_remember_id").is(":checked") + "" });
             }
             //            getLocalSettingsInfo(loginJson);
             //            init("");
@@ -78,7 +78,7 @@ function logout() {
     currentCustomer = undefined;
     tempScanResultList = [];
     //call device method
-    window.webkit.messageHandlers.LogoutClick.postMessage({ key: "key", value: "value" });
+    window.webkit.messageHandlers.LogoutClick({ key: "key", value: "value" });
 }
 var tempTransmission
 var tempScanTime
@@ -96,7 +96,7 @@ function getLocalSettingsInfo(loginInfo) {
     if (window.webkit) {
         var userId = loginJson.Result.mAccount.Id;
         var token = loginJson.Token;
-        window.webkit.messageHandlers.GetLocalSettings.postMessage({ "userId": JSON.stringify(userId), "token": token });
+        window.webkit.messageHandlers.GetLocalSettings({ "userId": JSON.stringify(userId), "token": token });
     }
 }
 function init(localSettingsInfo) {

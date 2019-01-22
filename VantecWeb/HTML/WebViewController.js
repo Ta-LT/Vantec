@@ -1,7 +1,7 @@
 
 class WebViewController {
     constructor() {
-        this.fw = framework.Shared;
+        this.fw = framework.Shared();
         this.deviceRotationControl = {
             portrait: function () { },
             landscapeRight: function () { }
@@ -22,12 +22,12 @@ class WebViewController {
             setUserId(userName);
         }
         //set version
-        setVersion('Ver 2.0');
+        setVersion('2.0');
         showLoginPage();
     }
     updateLocalResultList(userId, tMeasuresList) {
         let localData = LocalDataHelper.getLocalDataByKey(userId + "_localResults");
-        var localResults = localData;
+        var localResults = JSON.parse(localData);
         var localResultsToReturn = [];
         if (localData) {
             var localResultIndex = localResults.length - 1
@@ -83,17 +83,17 @@ class WebViewController {
     WorkStart(message) {
         // todo upload new result to server
         let dic = message;
-        let newResultList = dic["newResultList"]
+        let newResultList = JSON.parse(dic["newResultList"]);
         let autoSendDataFlg = dic["Transmission"]
         var postSucess = function (result) {
-            let tMeasuresInfo = result;
+            let tMeasuresInfo = JSON.parse(result);
             workStartCallback(tMeasuresInfo.Result);
         }
         var postError = function (error) {
             workStartCallback(newResultList);
         }
         if (autoSendDataFlg == "1") {
-            fw.SendNewResultToServer(newResultList, postSucess, postError);
+            this.fw.SendNewResultToServer(newResultList, postSucess, postError);
         } else {
             workStartCallback(newResultList);
         }
@@ -102,7 +102,7 @@ class WebViewController {
         let stepsCount = 0;//StepCounter.Shared.stopPedometerUpdates()
         //
         let dic = message;
-        let endResult = dic["data"];
+        let endResult = JSON.parse(dic["data"] ? dic["data"] : "[]");
         let userId = dic["mAccount_Id"];
         let autoSendDataFlg = dic["Transmission"];
         var tMeasuresList = endResult;
@@ -120,7 +120,7 @@ class WebViewController {
         }
         var saveResultToLocal = function () {
             let localData = LocalDataHelper.getLocalDataByKey(userId + "_localResults")
-            var localResults = localData;
+            var localResults = localData ? localData : [];
 
             $.each(tMeasuresList, function (tmIndex, tmItem) {
                 tmItem.StatusCode = 0;
@@ -130,7 +130,7 @@ class WebViewController {
             workEndCallback(endResult);
         }
         if (autoSendDataFlg == "1") {
-            fw.SendNewResultToServer(tMeasuresList, postSucess, postError);
+            this.fw.SendNewResultToServer(tMeasuresList, postSucess, postError);
         } else {
             saveResultToLocal();
         }
@@ -140,37 +140,37 @@ class WebViewController {
         let workDate = dic["WorkDate"];
         let userId = dic["mAccount_Id"];
         let localData = LocalDataHelper.getLocalDataByKey(userId + "_localResults");
-        var resultsToShow = localData;
+        var resultsToShow = JSON.parse(localData ? localData : "[]");
         var getSucess = function (result) {
-            let tMeasuresInfo = result;
-            resultsToShow = resultsToShow + tMeasuresInfo.Result;
+            let tMeasuresInfo = JSON.parse(result);
+            resultsToShow = resultsToShow.concat(tMeasuresInfo.Result ? tMeasuresInfo.Result : "[]");
             showResultsListCallback(resultsToShow);
         }
         var getError = function (error) {
             showResultsListCallback(resultsToShow);
         }
-        fw.GetTMeasures(userId, workDate, getSucess, getError);
+        this.fw.GetTMeasures(userId, workDate, getSucess, getError);
     }
     SendResultsToServer(message) {
         let dic = message;
-        let resultForSendList = dic["data"];
+        let resultForSendList = JSON.parse(dic["data"] ? dic["data"] : "[]");
         let userId = dic["mAccount_Id"];
         var tMeasuresList = resultForSendList;
 
         var postSucess = function (result) {
-            let tMeasuresInfo = result;
+            let tMeasuresInfo = JSON.parse(result);
             //delete selected result from locallist
-            this.updateLocalResultList(userId, tMeasuresInfo.Result);
+            this.updateLocalResultList(userId, tMeasuresInfo.Result ? tMeasuresInfo.Result : "[]");
             sendResultsToServerCallback(result);
         }
         var postError = function (error) {
             sendResultsToServerCallback();
         }
-        fw.SendNewResultToServer(tMeasuresList, postSucess, postError);
+        this.fw.SendNewResultToServer(tMeasuresList, postSucess, postError);
     }
     DeleteResults(message) {
         let dic = message;
-        let resultListForDelete = dic["data"];
+        let resultListForDelete = JSON.parse(dic["data"] ? dic["data"] : "[]");
         let userId = dic["mAccount_Id"];
         var tMeasuresList = resultListForDelete;
         var localResultForDeleteList = [];
@@ -192,7 +192,7 @@ class WebViewController {
             removeResultsCallback();
         }
         // remove results from server
-        fw.SendNewResultToServer(resultForDeleteListOnServer, postSucess, postError);
+        this.fw.SendNewResultToServer(resultForDeleteListOnServer, postSucess, postError);
     }
     RememberID(message) {
         let dic = message;
@@ -222,7 +222,7 @@ class WebViewController {
         var getError = function (error) {
             dailyOutputCallback();
         }
-        fw.DailyOutput(userId, workDate, getSucess, getError);
+        this.fw.DailyOutput(userId, workDate, getSucess, getError);
     }
     ChangeRotation(message) {
         let dic = message;

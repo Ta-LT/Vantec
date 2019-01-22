@@ -7,10 +7,13 @@ class framework{
 		this.httpHelper = {
 			httpToken: "",
 			Post: function (url, data, success, failure) {
-				fetch(url, {
-					method: "POST",
-					body: JSON.stringify(data)
-				})
+				(fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json; charset=utf-8"
+                    },
+					body: data
+                }).then(response => response.json()))
 				.then(function (response) {
 					success(response);
 				})
@@ -19,9 +22,12 @@ class framework{
 				})
 			},
 			Get: function (url, success, failure) {
-				fetch(url, {
-					method: "GET"
-				})
+				(fetch(url, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json; charset=utf-8"
+                    }
+                }).then(response => response.json()))
 				.then(function (response) {
 					success(response);
 				})
@@ -39,24 +45,24 @@ class framework{
     //ログイン
     UserLogin(userInfo,success,failure){
         //var jsonData = JsonHelper.ToJson(userInfo)
-    	let url = serverUrl + "Login";
+        let url = this.serverUrl + "Login";
         this.httpHelper.Post(url, userInfo, success, failure);
     }
     //作業実績送信
     SendNewResultToServer(newResult,success,failure){
-    	let url = serverUrl + "UpdateTMeasures";
+        let url = this.serverUrl + "UpdateTMeasures";
         this.httpHelper.Post(url, newResult, success, failure);
     }
     //作業実績取得
     GetTMeasures(mAccount_id,WorkDate,success,failure){
-    	var url = serverUrl + "GetTMeasures/";
+        var url = this.serverUrl + "GetTMeasures/";
         url += mAccount_id + "/";
         url += WorkDate;
         this.httpHelper.Get(url, success, failure);
     }
     //日報出力
     DailyOutput(mAccount_id,WorkDate,success,failure){
-    	var url = serverUrl + "PrintReport/";
+        var url = this.serverUrl + "PrintReport/";
     	url += mAccount_id + "/";
     	url += WorkDate;
     	this.httpHelper.Get(url, success, failure);
