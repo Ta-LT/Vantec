@@ -1407,9 +1407,8 @@
             </div>
         </div>
         <!-- end:: page_top_h_edit -->
-        <map name="planetmap">
-            
-        </map>
+        <map name="planetmap"></map>
+        <audio style="display:none;" id="mainalarm" src="./Audio/ok.mp3" autoplay></audio>
 
 
         <!--begin::Base Scripts -->
@@ -1423,6 +1422,7 @@
         <script src="assets/app/js/dashboard.js" type="text/javascript"></script>
         <!--end::Page Snippets -->
         <script src="jquery.timers-1.2.js" type="text/javascript"></script>
+        <script src="framework.js" type="text/javascript"></script>
         <script src="index.js" type="text/javascript"></script>
         <script src="login.js" type="text/javascript"></script>
         <script src="top.js" type="text/javascript"></script>
@@ -1440,6 +1440,16 @@
         <script src="count_scantype_edit.js" type="text/javascript"></script>
         <script src="bc_check.js" type="text/javascript"></script>
         <script src="top_edit.js" type="text/javascript"></script>
+        <script src="WebViewController.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            if (!window.webkit) {
+                window.webkit = { messageHandlers: new WebViewController() };
+            }
+            else {
+                window.webkit.messageHandlers = new WebViewController();
+            }
+
+        </script>
     </body>
 	<!-- end::Body -->
 </html>

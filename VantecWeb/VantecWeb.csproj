@@ -58,6 +58,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HTML\Audio\ng.mp3" />
+    <Content Include="HTML\Audio\ok.mp3" />
+    <Content Include="HTML\framework.js" />
+    <Content Include="HTML\WebViewController.js" />
     <Content Include="VantecSwift\.DS_Store" />
     <Content Include="VantecSwift\Base.lproj\Main.storyboard" />
     <Content Include="VantecSwift\Controllers\WebViewController.swift" />
@@ -85,6 +89,8 @@
     <Content Include="VantecSwift\HTML\assets\vendors\base\fonts\summernote\summernote.eot" />
     <Content Include="VantecSwift\HTML\assets\vendors\base\fonts\summernote\summernote.ttf" />
     <Content Include="VantecSwift\HTML\assets\vendors\base\fonts\summernote\summernote.woff" />
+    <Content Include="VantecSwift\HTML\Audio\ng.mp3" />
+    <Content Include="VantecSwift\HTML\Audio\ok.mp3" />
     <Content Include="VantecSwift\Info.plist" />
     <Content Include="VantecSwift\Modles\DBModles\TMeasures.swift" />
     <Content Include="VantecSwift\Modles\DeviceRotationControl.swift" />
@@ -125,6 +131,8 @@
     <Content Include="HTML\assets\vendors\base\fonts\summernote\summernote.ttf" />
     <Content Include="HTML\assets\vendors\base\fonts\summernote\summernote.woff" />
     <Content Include="workingpic.png" />
+    <Content Include="VantecSwift\HTML\framework.js" />
+    <Content Include="VantecSwift\HTML\WebViewController.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

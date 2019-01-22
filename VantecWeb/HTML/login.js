@@ -160,10 +160,10 @@ jQuery(document).ready(function () {
                 "margin": "0 auto",
                 "z-index": "999"
             });
-            $("body").append(userimg);
+            $("body").append(userimg.hide());
             var userimgY = userimg.height() / 2082 * 1650;
             $("map").append($("<area shape='rect' coords='0," + userimgY + ",200," + (userimgY + 200) + "' href='javascript:logout();'/>"));
-            $("body > div").hide();
+            //$("body > div").hide();
         }
     });
     //    $('#dp_login_worktime').datepicker({
