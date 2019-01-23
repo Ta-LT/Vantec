@@ -64,8 +64,8 @@ class WebViewController {
     }
     SettingsChanged(message) {
         let dic = message;
-        let settingsInfo = dic["settingsInfo"]
-        let userId = dic["userId"]
+        let settingsInfo = JSON.parse(dic["settingsInfo"]);
+        let userId = dic["userId"];
         LocalDataHelper.setLocalDataByKey(userId, settingsInfo);
     }
     GetLocalSettings(message) {
@@ -74,7 +74,7 @@ class WebViewController {
         let userId = dic["userId"];
         this.fw.httpHelper.httpToken = dic["token"];
         let localData = LocalDataHelper.getLocalDataByKey(userId);
-        var settingsInfo = "''"
+        var settingsInfo = ""
         if (localData) {
             settingsInfo = localData;
         }
@@ -257,14 +257,25 @@ class WebViewController {
 class LocalDataHelper {
     //データ登録
     static setLocalDataByKey(key, value) {
-        $.data(document, key, value);
+        //$.data(document, key, value);
+        if (key != undefined && value != undefined) {
+            localStorage.setItem(key, JSON.stringify(value));
+        }
     }
     //データ削除
     static removeLocalDataByKey(key) {
-        $.data(document, key, undefined);
+        //$.data(document, key, undefined);
+        if (key) {
+            localStorage.removeItem(key);
+        }
     }
     //データ取得
     static getLocalDataByKey(key) {
-        return $.data(document, key);
+        if (key) {
+            return JSON.parse(localStorage.getItem(key));
+        }
+        else {
+            return $.data(document, key);
+        }
     }
 }
