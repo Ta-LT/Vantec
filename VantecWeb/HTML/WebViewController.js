@@ -93,7 +93,7 @@ class WebViewController {
             workStartCallback(newResultList);
         }
         if (autoSendDataFlg == "1") {
-            this.fw.SendNewResultToServer(newResultList, postSucess, postError);
+            this.fw.SendNewResultToServer(JSON.stringify(newResultList), postSucess, postError);
         } else {
             workStartCallback(newResultList);
         }
@@ -130,7 +130,7 @@ class WebViewController {
             workEndCallback(endResult);
         }
         if (autoSendDataFlg == "1") {
-            this.fw.SendNewResultToServer(tMeasuresList, postSucess, postError);
+            this.fw.SendNewResultToServer(JSON.stringify(tMeasuresList), postSucess, postError);
         } else {
             saveResultToLocal();
         }
@@ -142,7 +142,7 @@ class WebViewController {
         let localData = LocalDataHelper.getLocalDataByKey(userId + "_localResults");
         var resultsToShow = JSON.parse(localData ? localData : "[]");
         var getSucess = function (result) {
-            let tMeasuresInfo = JSON.parse(result);
+            let tMeasuresInfo = result;
             resultsToShow = resultsToShow.concat(tMeasuresInfo.Result ? tMeasuresInfo.Result : "[]");
             showResultsListCallback(resultsToShow);
         }
@@ -156,17 +156,17 @@ class WebViewController {
         let resultForSendList = JSON.parse(dic["data"] ? dic["data"] : "[]");
         let userId = dic["mAccount_Id"];
         var tMeasuresList = resultForSendList;
-
+        var _this = this;
         var postSucess = function (result) {
-            let tMeasuresInfo = JSON.parse(result);
+            let tMeasuresInfo = result;
             //delete selected result from locallist
-            this.updateLocalResultList(userId, tMeasuresInfo.Result ? tMeasuresInfo.Result : "[]");
+            _this.updateLocalResultList(userId, tMeasuresInfo.Result ? tMeasuresInfo.Result : "[]");
             sendResultsToServerCallback(result);
         }
         var postError = function (error) {
             sendResultsToServerCallback();
         }
-        this.fw.SendNewResultToServer(tMeasuresList, postSucess, postError);
+        this.fw.SendNewResultToServer(JSON.stringify(tMeasuresList), postSucess, postError);
     }
     DeleteResults(message) {
         let dic = message;
