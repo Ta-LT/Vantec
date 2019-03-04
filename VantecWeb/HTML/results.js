@@ -185,6 +185,19 @@ function createResult(result){
         resultElements.recordContainerLeft.customer.text.text(loginJson.Result.mLanguage["MOBILEUSER_CUSROMERSEL"]);
         resultElements.recordContainerLeft.customer.text.css("color","#ccc");
     }
+    resultElements.recordContainerLeft.customer.container.click(function () {
+        $("#page_results").hide();
+        customerInit(function (selectedCustomer) {
+            result.mCustomer_Id = selectedCustomer.Id;
+            resultElements.recordContainerLeft.customer.text.text(customersObj[result.mCustomer_Id]);
+            resultElements.recordContainerLeft.customer.text.val(result.mCustomer_Id);
+            resultEditCount++;
+            $("#page_results").show();
+            $("#page_customer").hide();
+        });
+        $("#page_customer").show();
+    });
+
     resultElements.recordContainerRight.time.StartDateTime.text.timepicker("setTime", result.StartDateTime.split(" ")[1]);
     resultElements.recordContainerRight.time.EndDateTime.text.timepicker("setTime", result.EndDateTime.split(" ")[1]);
     if(result.InputType == 4){

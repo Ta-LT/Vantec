@@ -168,6 +168,20 @@ class WebViewController {
         }
         this.fw.SendNewResultToServer(JSON.stringify(tMeasuresList), postSucess, postError);
     }
+    SendBcListToServer(message) {
+        let dic = message;
+        var _this = this;
+        var postSucess = function (result) {
+            let tMeasuresInfo = result;
+            //delete selected result from locallist
+            //_this.updateLocalResultList(userId, tMeasuresInfo.Result ? tMeasuresInfo.Result : "[]");
+            //sendResultsToServerCallback(result);
+        }
+        var postError = function (error) {
+            //sendResultsToServerCallback();
+        }
+        this.fw.SendBcListToServer(JSON.stringify(dic), postSucess, postError);
+    }
     DeleteResults(message) {
         let dic = message;
         let resultListForDelete = JSON.parse(dic["data"] ? dic["data"] : "[]");

@@ -2,11 +2,11 @@ var isCallFromTopClick = true;
 var span_customer_names = $(".customer-name");
 var div_bc_check = $("#div_bc_check,#div_bc_check_h");
 // init top page
-function customerInit(){
-	createCustomers(loginJson.Result.mCustomer)
+function customerInit(callback){
+    createCustomers(loginJson.Result.mCustomer, callback)
 }
 // create customer on page
-function createCustomers(customers){
+function createCustomers(customers, callback){
 	var content = $("#content_customer").empty();
     span_customer_names.text("");
 	//var customerColumn = $("<div/>").addClass("m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow");
@@ -20,31 +20,36 @@ function createCustomers(customers){
 		}
 		customerButtonElements.customerButton.addClass("btn m-btn--air btn-outline-info m-btn m-btn--custom m-btn--outline-2x main-btn").addClass("btn_customer");
 		// add click event 
-		customerButtonElements.customerButton.click(function(){
-            if(!$(this).hasClass("select")){
-                //end current work
-                workEnd();
-                //init workkbn by customer id
-                topInit(customer.Id);
-                //init rest time
-                restTimeInit(customer.Id);
-                // clear workkbn text
-                span_workkbn_names.text("");
+        customerButtonElements.customerButton.click(function () {
+            if (typeof callback == "function") {
+                callback(customer);
             }
-            $(".btn_customer").removeClass("select");
-            $(this).addClass("select");
-            span_customer_names.text(customer.CustomerName);
-            if(currentResult){
-                currentResult.mCustomer_Id = parseInt(customer.Id);
+            else {
+                if (!$(this).hasClass("select")) {
+                    //end current work
+                    workEnd();
+                    //init workkbn by customer id
+                    topInit(customer.Id);
+                    //init rest time
+                    restTimeInit(customer.Id);
+                    // clear workkbn text
+                    span_workkbn_names.text("");
+                }
+                $(".btn_customer").removeClass("select");
+                $(this).addClass("select");
+                span_customer_names.text(customer.CustomerName);
+                if (currentResult) {
+                    currentResult.mCustomer_Id = parseInt(customer.Id);
+                }
+                //can bccheck button show up
+                if (customer.BarcodeUse == 1) {
+                    div_bc_check.show();
+                } else {
+                    div_bc_check.hide();
+                }
+                currentCustomer = customer;
+                closeCustomer();
             }
-            //can bccheck button show up
-            if(customer.BarcodeUse == 1){
-                div_bc_check.show();
-            }else{
-                div_bc_check.hide();
-            }
-            currentCustomer = customer;
-            closeCustomer();
 		});
         // set values
         customerButtonElements.customerButton.attr("mCustomer_Id",customer.Id);

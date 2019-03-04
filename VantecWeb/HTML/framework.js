@@ -53,6 +53,11 @@ class framework{
         let url = this.serverUrl + "UpdateTMeasures";
         this.httpHelper.Post(url, newResult, success, failure);
     }
+    //BC送信
+    SendBcListToServer(BcList, success, failure) {
+        let url = this.serverUrl + "UpdateTVerifications";
+        this.httpHelper.Post(url, BcList, success, failure);
+    }
     //作業実績取得
     GetTMeasures(mAccount_id,WorkDate,success,failure){
         var url = this.serverUrl + "GetTMeasures/";

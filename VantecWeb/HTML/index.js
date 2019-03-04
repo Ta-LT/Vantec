@@ -3,6 +3,7 @@ var div_alert = $("#div_alert");
 var txt_alert_message = $("#txt_alert_message");
 var loginJson = {};
 var currentResult;
+var currentWorkKbn;
 var currentCustomer;
 var resultElementRemoveList = [];
 var tempScanResultList = [];
@@ -104,6 +105,11 @@ function sendResultsToServer(resultList_update) {
     showBackDrop();
     if (window.webkit) {
         window.webkit.messageHandlers.SendResultsToServer({ "mAccount_Id": "" + loginJson.Result.mAccount.Id + "", "data": "" + JSON.stringify(resultList_update) + "" });
+    }
+}
+function sendBcListToServer(bcList) {
+    if (window.webkit) {
+        window.webkit.messageHandlers.SendBcListToServer(bcList);
     }
 }
 function sendResultsToServerCallback(result) {
