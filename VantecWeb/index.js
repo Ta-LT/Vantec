@@ -6,40 +6,43 @@ $(function () {
     $("#framescontainer iframe").show();
 })
 
-function subframeLogedin(username, frameElement) {
-    if ($("button.user[username='" + username + "']").length > 0) {
-        $("button.user[username='" + username + "']").click();
+function subframeLogedin(username, frameElement, userid) {
+    if ($("button.user[userid='" + userid + "']").length > 0) {
+        $("button.user[userid='" + userid + "']").click();
         $(frameElement[0].contentWindow.document).find("button#m_login_signin_submit").attr("disabled", false);
+        frameElement.remove();
+        $("button.user[userid='']").remove();
+        addNewloginFrame();
         return true;
     }
     else {
-        $("button.user.selected").text(username).attr("username", username);
-        frameElement.attr("username", username);
+        $("button.user.selected").text(username).attr("userid", userid);
+        frameElement.attr("userid", userid);
         $(frameElement[0].contentWindow.document).find("div.m-login__logo span").text(username);
         addNewloginFrame();
         $("#usernamediv").text(username);
         return false;
     }
 }
-function subframeLogedout(username, frameElement) {
-    if ($("button.user[username='" + username + "']").length > 0) {
-        $("button.user[username='" + username + "']").remove();
+function subframeLogedout(username, frameElement, userid) {
+    if ($("button.user[userid='" + userid + "']").length > 0) {
+        $("button.user[userid='" + userid + "']").remove();
         frameElement.remove();
-        $("button.user[username='']").click();
+        $("button.user[userid='']").click();
         return true;
     }
 }
 function addNewloginFrame() {
-    var newUserloginButton = $("<button type='button'/>").addClass("user").text("Login New User").attr("username", "");
+    var newUserloginButton = $("<button type='button'/>").addClass("user").text("Login New User").attr("userid", "");
     newUserloginButton.click(function () {
         $(".user").removeClass("selected");
         newUserloginButton.addClass("selected");
         $("#framescontainer iframe").hide();
-        $("#framescontainer iframe[username='" + newUserloginButton.attr("username") + "']").show();
+        $("#framescontainer iframe[userid='" + newUserloginButton.attr("userid") + "']").show();
         $("#usernamediv").text(newUserloginButton.attr("username"));
     });
     $("#maindiv").append(newUserloginButton);
-    var newUserFrame = $("<iframe/>").attr("src", "./HTML/index.html").attr("username", "");
+    var newUserFrame = $("<iframe/>").attr("src", "./HTML/index.html").attr("userid", "");
     $.data(document, "iframes").push(newUserFrame);
     $("#framescontainer").append(newUserFrame.hide());
 }

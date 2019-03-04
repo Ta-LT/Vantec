@@ -79,6 +79,7 @@ function logout() {
     tempScanResultList = [];
     //call device method
     window.webkit.messageHandlers.LogoutClick({ key: "key", value: "value" });
+    parent.window.subframeLogedout($("#txt_userid").val(), $(window.frameElement), loginJson.Result.mAccount.Id);
 }
 var tempTransmission
 var tempScanTime
@@ -89,14 +90,16 @@ function getLocalSettingsInfo(loginInfo) {
         showMsg($('#m_login_signin_submit').closest('form'), 'danger', loginInfo.Message), 3000;
         return;
     }
-    loginJson = loginInfo;
-    tempTransmission = loginJson.Result.mMobileSet.Transmission;
-    tempScanTime = loginJson.Result.mMobileSet.ScanTime;
-    //tempScanMaxLength = loginJson.Result.mMobileSet.Digit;
-    if (window.webkit) {
-        var userId = loginJson.Result.mAccount.Id;
-        var token = loginJson.Token;
-        window.webkit.messageHandlers.GetLocalSettings({ "userId": JSON.stringify(userId), "token": token });
+    if (!parent.window.subframeLogedin(loginInfo.Result.mAccount.Name, $(window.frameElement), loginInfo.Result.mAccount.Id)) {
+        loginJson = loginInfo;
+        tempTransmission = loginJson.Result.mMobileSet.Transmission;
+        tempScanTime = loginJson.Result.mMobileSet.ScanTime;
+        //tempScanMaxLength = loginJson.Result.mMobileSet.Digit;
+        if (window.webkit) {
+            var userId = loginJson.Result.mAccount.Id;
+            var token = loginJson.Token;
+            window.webkit.messageHandlers.GetLocalSettings({ "userId": JSON.stringify(userId), "token": token });
+        }
     }
 }
 function init(localSettingsInfo) {
@@ -154,17 +157,17 @@ jQuery(document).ready(function () {
     $('#m_login_signin_submit').click(function (e) {
         var _this = this;
         login(_this);
-        if (!parent.window.subframeLogedin($("#txt_userid").val(), $(window.frameElement))) {
-            var userimg = $("<img/>").attr("src", "../workingpic.png").attr("usemap", "#planetmap").css({
-                "height": "100%",
-                "margin": "0 auto",
-                "z-index": "999"
-            });
-            $("body").append(userimg.hide());
-            var userimgY = userimg.height() / 2082 * 1650;
-            $("map").append($("<area shape='rect' coords='0," + userimgY + ",200," + (userimgY + 200) + "' href='javascript:logout();'/>"));
-            //$("body > div").hide();
-        }
+        //if (!parent.window.subframeLogedin($("#txt_userid").val(), $(window.frameElement))) {
+        //    var userimg = $("<img/>").attr("src", "../workingpic.png").attr("usemap", "#planetmap").css({
+        //        "height": "100%",
+        //        "margin": "0 auto",
+        //        "z-index": "999"
+        //    });
+        //    $("body").append(userimg.hide());
+        //    var userimgY = userimg.height() / 2082 * 1650;
+        //    $("map").append($("<area shape='rect' coords='0," + userimgY + ",200," + (userimgY + 200) + "' href='javascript:logout();'/>"));
+        //    //$("body > div").hide();
+        //}
     });
     //    $('#dp_login_worktime').datepicker({
     //        format: "yyyy-mm-dd",
@@ -179,6 +182,6 @@ jQuery(document).ready(function () {
     //    $('#dp_login_worktime').datepicker("setDate", new Date());
     //    $('#dp_login_worktime').focus(function(){$(this).blur()})
 });
-function logout() {
-    parent.window.subframeLogedout($("#txt_userid").val(), $(window.frameElement));
-}
+//function logout() {
+//    parent.window.subframeLogedout($("#txt_userid").val(), $(window.frameElement));
+//}
