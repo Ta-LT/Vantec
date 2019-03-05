@@ -1,0 +1,129 @@
+﻿#page_group_person_number_edit .m-stack.m-stack--general.m-stack--ver.m-stack--demo.m-stack--demorow {
+    height: 20%;
+}
+
+#page_group_person_number_edit td {
+    font-size: 2rem;
+}
+
+#page_group_person_number_edit .dropdown-toggle, .dropdown-menu {
+    font-size: 1.5rem;
+}
+
+#page_group_person_number_edit .main-btn {
+    height: 90%;
+    width: 90%;
+    min-height: 40px;
+    max-height: 200px;
+    word-break: break-all;
+    white-space: normal;
+    overflow: hidden;
+    padding: 0.1em !important;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/**
+.btn-outline-primary.m-btn--air.focus, .btn-outline-primary.m-btn--air:focus, .btn-outline-primary.m-btn--air:hover, .btn-primary.m-btn--air.focus, .btn-primary.m-btn--air:focus, .btn-primary.m-btn--air:hover, .m-btn--gradient-from-primary.m-btn--air.focus, .m-btn--gradient-from-primary.m-btn--air:focus, .m-btn--gradient-from-primary.m-btn--air:hover {
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(88, 103, 221, 0.8);
+    -moz-box-shadow: 0px 5px 10px 2px rgba(88, 103, 221, 0.8);
+    box-shadow: 0px 5px 10px 2px rgba(88, 103, 221, 0.8);
+}**/
+
+#page_group_person_number_edit .m-stack__item.m-stack__item--center.m-stack__item--middle table {
+    height: 100%;
+    width: 100%;
+}
+
+#page_group_person_number_edit  #header span.main-title {
+    color: #000000;
+}
+
+#page_group_person_number_edit .m-stack--demo.m-stack--ver .m-stack__item, .m-stack--demo.m-stack--hor .m-stack__demo-item {
+    border-width: 0px;
+    background: unset;
+}
+
+
+#page_group_person_number_edit .input-group {
+    height: 80%;
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(47, 117, 181, 0.8);
+    -moz-box-shadow: 0px 5px 10px 2px rgba(47, 117, 181, 0.8);
+    box-shadow: 0px 5px 10px 2px rgba(47, 117, 181, 0.8);
+}
+
+#page_group_person_number_edit .btn.m-btn--gradient-from-accent.m-btn--gradient-to-success,
+#page_group_person_number_edit .btn.m-btn--gradient-from-metal.m-btn--gradient-to-accent,
+#page_group_person_number_edit .btn.m-btn--gradient-from-brand.m-btn--gradient-to-info,
+#page_group_person_number_edit .btn.m-btn--gradient-from-focus.m-btn--gradient-to-danger {
+    background: none;
+    background-color: #2F75B5;
+}
+
+#page_group_person_number_edit .btn-outline-brand:hover {
+    background-color: #2F75B5;
+    border-color: #2F75B5;
+}
+
+#page_group_person_number_edit .btn-outline-brand:active, #page_group_person_number_edit .btn-outline-brand.active, #page_group_person_number_edit .show > .btn-outline-brand.dropdown-toggle {
+    color: #ffffff;
+    background-color: #2F75B5;
+    border-color: #2F75B5;
+}
+
+#page_group_person_number_edit .btn-outline-brand {
+    color: #2F75B5;
+    border-color: #2F75B5;
+}
+
+#page_group_person_number_edit .btn-outline-info {
+    color: #2F75B5;
+    background-color: transparent;
+    background-image: none;
+    border-color: #2F75B5;
+}
+
+#page_group_person_number_edit .btn.m-btn--gradient-from-metal {
+    color: #FFFFFF;
+}
+#page_group_person_number_edit .btn-accent, #page_group_person_number_edit .btn-accent:hover {
+    background-color: #2F75B5;
+    border-color: #2F75B5;
+}
+#page_group_person_number_edit .btn.m-btn--pill {
+    border-radius: 5px;
+}
+
+#page_group_person_number_edit .btn-outline-info:hover {
+    background-color: #2F75B5;
+    border-color: #2F75B5;
+}
+
+#page_group_person_number_edit .btn-outline-info, {
+    border-color: #2F75B5;
+}
+
+@media all and (orientation : landscape) {
+    #page_group_person_number_edit .calculator {
+        width: 24%;
+        height: 20%;
+        float: left;
+        margin-top: 2.5px;
+        margin-bottom: 2.5px;
+        margin-right: 2.5px;
+        margin-left: 3px;
+    }
+}
+
+@media all and (orientation : portrait){
+
+    #page_group_person_number_edit .calculator {
+        width: 30%;
+        height: 18%;
+        float: left;
+        margin-top: 2.5px;
+        margin-bottom: 2.5px;
+        margin-right: 2.5px;
+        margin-left: 8px;
+    }
+}

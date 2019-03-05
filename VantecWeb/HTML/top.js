@@ -27,32 +27,48 @@ function topInit(customerId){
             var autoRest = (loginJson.Result.mTimeSet && loginJson.Result.mTimeSet.AutoRest == 1)
             var inputType = loginJson.Result.mMobileSet.InputType
             // case when restFlg is true then do nothing
-            if(autoRest && restFlg){return}
-            if(isFirstClick){
-                //end current work
-                workEnd();
-                // todo if has customer pre click mode
-                if(isCustomerPreClick && !restFlg)
-                {
-                    isCallFromTopClick = true;
-                    pageNavigation(getTopPage(),"page_customer");
+            if (autoRest && restFlg) { return }
+            function navigateToKbn(groupPeople) {
+                if (isFirstClick) {
+                    //end current work
+                    workEnd();
+                    // todo if has customer pre click mode
+                    if (isCustomerPreClick && !restFlg) {
+                        isCallFromTopClick = true;
+                        pageNavigation(getTopPage(), "page_customer");
+                    }
+                    // start to work
+                    workStart(topButtonElements.topButton.text(), parseInt(topButtonElements.topButton.attr("topId")), groupPeople);
+                    // count type init
+                    resetCountTabType();
+                    resetCountNumType();
+                    resetCountScanType();
                 }
-                // start to work
-                workStart($(this).text(),parseInt($(this).attr("topId")));
-                // count type init
-                resetCountTabType();
-                resetCountNumType();
-                resetCountScanType();
-            }
-            inputFlg = workKBN.InputType;
-            if(!isFirstClick || !isCustomerPreClick){
-                //show count page
-                if(inputType != 1 && inputFlg != 0){
-                    showCountPage(getTopPage());
+                inputFlg = workKBN.InputType;
+                if (!isFirstClick || !isCustomerPreClick) {
+                    //show count page
+                    if (inputType != 1 && inputFlg != 0) {
+                        showCountPage(getTopPage());
+                    }
                 }
+                //set work kbn name as input page title
+                span_workkbn_names.text(workKBN.DetailType);
             }
-            //set work kbn name as input page title
-            span_workkbn_names.text(workKBN.DetailType);
+            var currentSelectedWorkKbn = null;
+            $.each(loginJson.Result.mWorkKbn, function (kbnIndex, kbnItem) {
+                if (kbnItem.Id == topButtonElements.topButton.attr("topId")) {
+                    currentSelectedWorkKbn = kbnItem;
+                }
+            })
+            if (currentSelectedWorkKbn && currentSelectedWorkKbn.Member === 1) {
+                pageNavigation(getTopPage(), "page_group_person_number_edit");
+                $("#page_group_person_number_edit").data("oncommit",function(groupPeople){
+                    navigateToKbn(groupPeople);
+                });
+            }
+            else {
+                navigateToKbn();
+            }
 		});
         // set values
         topButtonElements.topButton.attr("topId",workKBN.Id);

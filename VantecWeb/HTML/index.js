@@ -36,9 +36,9 @@ function setUserId(userId) {
 function setVersion(version) {
     $("#txt_version").text("Ver" + version);
 }
-function workStart(topText, topVal) {
+function workStart(topText, topVal, groupPeople) {
     var newResultList = [];
-    currentResult = setResultStartValue(topText, topVal);
+    currentResult = setResultStartValue(topText, topVal, groupPeople);
     //change bgColor
     setTopBgColor(topVal);
 
@@ -158,7 +158,7 @@ function dailyOutputCallback(result) {
     hideBackDrop();
 }
 // set result start value
-function setResultStartValue(topText, topVal) {
+function setResultStartValue(topText, topVal, groupPeople) {
     var newResultObj = {
         DetailType: topText,
         mWorkKbn_Id: topVal,
@@ -175,7 +175,8 @@ function setResultStartValue(topText, topVal) {
         mCustomer_Id: $(".btn_customer.select").attr("mCustomer_Id") ? parseInt($(".btn_customer.select").attr("mCustomer_Id")) : "",
         DelFlg: 0,
         CreateDateTimeStamp: String(Date.now()),//timestamp
-        StatusCode: 0
+        StatusCode: 0,
+        Members: (groupPeople ? groupPeople : 0)
     }
     return newResultObj;
 }

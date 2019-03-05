@@ -61,6 +61,8 @@
     <Content Include="HTML\Audio\ng.mp3" />
     <Content Include="HTML\Audio\ok.mp3" />
     <Content Include="HTML\framework.js" />
+    <Content Include="HTML\group_person_number_input.css" />
+    <Content Include="HTML\group_person_number_input.js" />
     <Content Include="HTML\WebViewController.js" />
     <Content Include="VantecSwift\.DS_Store" />
     <Content Include="VantecSwift\Base.lproj\Main.storyboard" />
