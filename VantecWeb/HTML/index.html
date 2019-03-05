@@ -86,25 +86,23 @@
                         </div>
                         <form class="m-login__form m-form" action="" style="max-width:85%;">
                             <div class="form-group m-form__group">
-                                <input style="border:2px solid #2f75b5;background:white;border-radius:0.25rem;max-height:50px;" class="form-control m-input" type="text" placeholder="ID" id="txt_userid" name="id" autocomplete="off">
+                                <input style="border:2px solid #2f75b5;background:white;border-radius:0.25rem;max-height:50px;" class="form-control m-input" type="text" placeholder="Site ID" id="txt_basecode" name="basecode" autocomplete="off" onkeypress="if(event.keyCode==13) {$('#txt_userid').focus();return false;}" autofocus>
+                            </div>
+                            <div class="form-group m-form__group">
+                                <input style="border:2px solid #2f75b5;background:white;border-radius:0.25rem;max-height:50px;" class="form-control m-input" type="text" placeholder="ID" id="txt_userid" name="id" autocomplete="off" onkeypress="if(event.keyCode==13) {$('#txt_password').focus();return false;}" >
                             </div>
                             <div class="form-group m-form__group">
                                 <input style="border:2px solid #2f75b5;background:white;border-radius:0.25rem;max-height:50px;" class="form-control m-input m-login__form-input--last" type="password" placeholder="Password" id="txt_password" name="password">
                             </div>
-                            <!--div class="form-group m-form__group">
-                                <input id="dp_login_worktime" style="border:2px solid #2f75b5;background:white;border-radius:0.25rem;max-height:50px;" class="form-control m-input m-login__form-input--last" type="text" placeholder="WorkDate" name="password" readonly>
-                            </div-->
                             <div class="m-login__form-action">
                                 <button id="m_login_signin_submit" onclick="$(this).addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);" class="btn btn-primary m-btn m-btn--custom m-login__btn" style="background-color:#2f75b5;border:2px solid #2f75b5;">
                                     Log In
                                 </button>
                             </div>
                             <div class="m-login__form-action">
-                                <label class="m-checkbox m-checkbox--state-brand">
-                                    <input id="cb_login_remember_id" type="checkbox" name="check" onclick="$(this).attr('checked', true);">
-                                    <span></span>
-                                    Remember ID
-                                </label>
+                                <button id="m_login_signin_reset" class="btn btn-primary m-btn m-btn--custom m-login__btn" style="background-color:#2f75b5;border:2px solid #2f75b5;" type="button">
+                                    Reset
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -806,7 +804,7 @@
             <div class="m-stack__item m-stack__item--left m-stack__item--middle header">
                 <div class="m-stack m-stack--ver m-stack--general m-stack--demo m-stack--demorow">
                     <div class="m-stack__item m-stack__item--left m-stack__item--middle" style="width:25%;">
-                        <div id="btn_close_count_scantype" class="btn m-btn--air m-btn--pill btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;">
+                        <div id="btn_close_count_scantype" class="btn m-btn--air m-btn--pill btn-accent m-btn btn-sm" style="text-align: left;width:auto;font-size: large;" onclick="pageNavigation('page_group_person_number_edit', getTopPage())">
                             <i class="fa fa-chevron-circle-left" style="font-size: large;"></i>
                             <span LanguageKey="MOBILEUSER_BACK">
                                 戻る

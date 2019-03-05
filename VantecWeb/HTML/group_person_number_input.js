@@ -15,6 +15,7 @@ var GroupPersonNumberInput = function() {
 
     var commit = function(event) {
         setButton(event);
+        $("#page_group_person_number_edit").hide();
         if (typeof $("#page_group_person_number_edit").data("oncommit") == "function") {
             $("#page_group_person_number_edit").data("oncommit")(selectedUnit);
         }

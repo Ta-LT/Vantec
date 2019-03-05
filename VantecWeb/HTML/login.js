@@ -15,6 +15,7 @@ function showMsg(form, type, msg, time) {
 function login(e) {
     var btn = $(e);
     var form = $(e).closest('form');
+    var basecode = $("#txt_basecode").val();
     var id = $("#txt_userid").val();
     var password = $("#txt_password").val();
     setTimeout(function () {
@@ -43,12 +44,13 @@ function login(e) {
         } else {
             //get data from server
             var userInfo = {
+                "BaseCode": basecode,
                 "UserId": id,
                 "Password": password
             }
             if (window.webkit) {
                 window.webkit.messageHandlers.LoginClick(JSON.stringify(userInfo));
-                window.webkit.messageHandlers.RememberID({ "userName": "" + id + "", "rememberIdFlg": "" + $("#cb_login_remember_id").is(":checked") + "" });
+                window.webkit.messageHandlers.RememberID({ "userName": "" + id + "", "rememberIdFlg": "false" });
             }
             //            getLocalSettingsInfo(loginJson);
             //            init("");
@@ -87,7 +89,7 @@ var tempScanTime
 function getLocalSettingsInfo(loginInfo) {
     loginClicked();
     if (loginInfo.ReturnCode == 3) {
-        showMsg($('#m_login_signin_submit').closest('form'), 'danger', loginInfo.Message), 3000;
+        showMsg($('#m_login_signin_submit').closest('form'), 'danger', loginInfo.Message, 3000);
         return;
     }
     if (!parent.window.subframeLogedin(loginInfo.Result.mAccount.Name, $(window.frameElement), loginInfo.Result.mAccount.Id)) {
@@ -152,6 +154,13 @@ jQuery(document).ready(function () {
             $("#txt_password").focus();
             return false;
         }
+    });
+
+    $("#m_login_signin_reset").click(function (e) {
+        $("#txt_userid").val("");
+        $("#txt_password").val("");
+        $("#txt_userid").focus();
+        $(this).closest('form').find('.alert').hide();
     });
 
     $('#m_login_signin_submit').click(function (e) {
