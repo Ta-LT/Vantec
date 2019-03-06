@@ -176,7 +176,7 @@ function setResultStartValue(topText, topVal, groupPeople) {
         DelFlg: 0,
         CreateDateTimeStamp: String(Date.now()),//timestamp
         StatusCode: 0,
-        Members: (groupPeople ? groupPeople : 0)
+        Members: (groupPeople ? groupPeople : 1)
     }
     return newResultObj;
 }
@@ -496,6 +496,21 @@ function getCustomersObjByJson() {
         customersObj[item.Id] = item.CustomerName;
     });
     return customersObj;
+}
+function formateDate(date) {
+    var returnValue = "";
+
+    if (date) {
+        returnValue += date.getFullYear() + "-";
+        returnValue += (date.getMonth() + 1) + "-";
+        returnValue += date.getDate() + " ";
+        returnValue += date.getHours() + ":";
+        returnValue += date.getMinutes() + ":";
+        returnValue += date.getSeconds();
+    }
+
+    return returnValue;
+
 }
 $(function () {
 

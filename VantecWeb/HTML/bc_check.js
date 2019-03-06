@@ -28,22 +28,23 @@ function showBCCheckResult(bcCheckCode1, bcCheckCodeDate1, bcCheckCode2, bcCheck
         playLocalAutio("ok.mp3");
         btn_cb_check_result.text("OK");
         btn_cb_check_result.css("background", "rgb(0, 227, 0)");
+        setTimeout(function () { resetBCCheck(); }, 1000);
     } else {
         playLocalAutio("ng.mp3");
         btn_cb_check_result.text("NG");
         btn_cb_check_result.css("background", "yellow");
     }
-    sendBcListToServer({
+    sendBcListToServer([{
         mAccount_Id: loginJson.Result.mAccount.Id,
-        mWorkKbn_Id: currentWorkKbn,
+        mWorkKbn_Id: ($("#page_top .btn_top.btn-outline-danger").attr("topid")) * 1,
         mCustomer_Id: currentCustomer ? currentCustomer.Id : null,
-        WorkDate: new Date(),
+        WorkDate: formateDate(new Date()),
         Barcode1: bcCheckCode1,
-        StartDateTime1: bcCheckCodeDate1,
+        StartDateTime1: formateDate(bcCheckCodeDate1),
         Barcode2: bcCheckCode2,
-        StartDateTime2: bcCheckCodeDate2,
+        StartDateTime2: formateDate(bcCheckCodeDate2),
         Collation: (bcCheckCode1 === bcCheckCode2 ? "OK" : "NG")
-    });
+    }]);
     btn_cb_check_result.show();
 }
 function getChangedVal(bcCheckCode) {
