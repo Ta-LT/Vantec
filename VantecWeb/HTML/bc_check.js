@@ -17,7 +17,7 @@ function resetBCCheck() {
     txt_bc_check_code2.val("");
     //txt_bc_check_code2.focus(function(){$(this).blur()})
     txt_bc_check_code2_proxy.val("")
-    txt_bc_check_code1_proxy.focus();
+    txt_bc_check_code1.focus();
     //txt_bc_check_code1_proxy.blur(function(){$(this).focus()})
     btn_cb_check_result.hide();
 }
@@ -66,8 +66,8 @@ $(function () {
         bcCheckCode1 = $(this).val();
         bcCheckCode1Date = new Date();
         txt_bc_check_code1_proxy.unbind("blur");
-        txt_bc_check_code2_proxy.focus();
-        txt_bc_check_code2_proxy.blur(function () { $(this).focus() })
+        //txt_bc_check_code2_proxy.focus();
+        //txt_bc_check_code2_proxy.blur(function () { $(this).focus() })
         $(this).val("");
     });
     txt_bc_check_code1.change(function (e) {
@@ -157,8 +157,8 @@ $(function () {
         btn_cb_check_result.hide();
         txt_bc_check_code1.val("");
         txt_bc_check_code2.val("");
-        txt_bc_check_code1_proxy.focus();
-        txt_bc_check_code1_proxy.blur(function () { $(this).focus() })
+        txt_bc_check_code1.focus();
+        //txt_bc_check_code1_proxy.blur(function () { $(this).focus() })
     });
     //go back to top page
     $("#btn_close_bc_check").click(function (e) {
