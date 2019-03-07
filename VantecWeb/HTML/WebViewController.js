@@ -189,11 +189,11 @@ class WebViewController {
         var tMeasuresList = resultListForDelete;
         var localResultForDeleteList = [];
         var resultForDeleteListOnServer = [];
-        for (tMeasure in tMeasuresList) {
-            if (tMeasure.StatusCode == 0) {
-                localResultForDeleteList.push(tMeasure);
+        for (let tMeasure in tMeasuresList) {
+            if (tMeasuresList[tMeasure].StatusCode == 0) {
+                localResultForDeleteList.push(tMeasuresList[tMeasure]);
             } else {
-                resultForDeleteListOnServer.push(tMeasure);
+                resultForDeleteListOnServer.push(tMeasuresList[tMeasure]);
             }
         }
         // remove results from locallist
@@ -206,7 +206,7 @@ class WebViewController {
             removeResultsCallback();
         }
         // remove results from server
-        this.fw.SendNewResultToServer(resultForDeleteListOnServer, postSucess, postError);
+        this.fw.SendNewResultToServer(JSON.stringify(resultForDeleteListOnServer), postSucess, postError);
     }
     RememberID(message) {
         let dic = message;
