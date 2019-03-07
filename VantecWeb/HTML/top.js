@@ -1,4 +1,6 @@
 var span_workkbn_names = $(".workkbn-name");
+//alert timer for Ó‹œy·½·¨
+var lastKbnChange = null;
 // init top page
 function topInit(customerId){
     var workKBNList = loginJson.Result.mWorkKbn.filter(function(workKBN) {
@@ -43,6 +45,7 @@ function topInit(customerId){
                     resetCountTabType();
                     resetCountNumType();
                     resetCountScanType();
+                    lastKbnChange = new Date();
                 }
                 inputFlg = workKBN.InputType;
                 if (!isFirstClick || !isCustomerPreClick) {
@@ -132,9 +135,10 @@ $(function () {
 	$("#btn_logout,#btn_logout_h").click(function(){
         showConfirmBox(loginJson.Result.mMessage["WEB_MESSAGE0068"],function(){
             //end current work
-            workEnd();
-            //logout
-            logout();
+            workEnd(function () {
+                //logout
+                logout();
+            });
         });
 	});
 	//open customers selecttion page
@@ -162,4 +166,27 @@ $(function () {
         pageNavigation(getTopPage(),"page_bc_check");
         resetBCCheck();
     });
+    setInterval(function () {
+        if (lastKbnChange
+            && loginJson.Result.mMobileSet.Notice
+            && loginJson.Result.mMobileSet.Time
+            && loginJson.Result.mMobileSet.Time != "0"
+            && $("#page_top .btn.btn-outline-danger").length > 0) {
+            var mobilesetTime = 0;
+            try {
+                mobilesetTime = parseInt(loginJson.Result.mMobileSet.Time);
+            } catch (exc) { }
+
+            if (mobilesetTime
+                && ((new Date()) - lastKbnChange) > (mobilesetTime * 60 * 1000)) {
+                playLocalAutio("alert.mp3");
+                if (loginJson.Result.mMobileSet.MeasureMode == 1) {
+                    lastKbnChange = new Date(9999999999999);//Nov 21 2286 01:46:39
+                }
+                else if (loginJson.Result.mMobileSet.MeasureMode == 2) {
+                    lastKbnChange = new Date();
+                }
+            }
+        }
+    }, 2000);
 });

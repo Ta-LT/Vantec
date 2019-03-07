@@ -59,7 +59,7 @@ $(function () {
         }
         var scanTopText = currentResult.DetailType;
         var scanTopVal = currentResult.mWorkKbn_Id;
-        var scanResult = setResultStartValue(scanTopText, scanTopVal);//start
+        var scanResult = setResultStartValue(scanTopText, scanTopVal, 0);//start
         scanResult.ScanKeyNo = scanKeyNoInput;
         setResultEndValue(scanResult);//end
         createScanResultOnPage(scanResult);

@@ -120,7 +120,8 @@ function init(localSettingsInfo){
     //restTimeInit();
     loginTimeInit();
     practicalsInit(dpd_count_numtype_practical.empty(),btn_count_numtype_practical);
-    practicalsInit(dpd_count_tabtype_practical.empty(),btn_count_tabtype_practical);
+    practicalsInit(dpd_count_tabtype_practical, btn_count_tabtype_practical);
+    //practicalsInit(dpd_count_tabtype_practical.empty(), btn_count_tabtype_practical);
     practicalsInit(dpd_count_tabtype_edit_practical.empty(),btn_count_tabtype_edit_practical);
     practicalsInit(dpd_count_numtype_edit_practical.empty(),btn_count_numtype_edit_practical);
     alarmsInit(dpd_setting_count_method_alarm.empty(),btn_setting_count_method_alarm);

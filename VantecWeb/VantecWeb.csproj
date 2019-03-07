@@ -58,6 +58,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HTML\Audio\alert.mp3" />
     <Content Include="HTML\Audio\ng.mp3" />
     <Content Include="HTML\Audio\ok.mp3" />
     <Content Include="HTML\framework.js" />

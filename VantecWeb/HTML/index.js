@@ -57,7 +57,7 @@ function workStartCallback(resultList) {
     currentResult = resultList[0];
     hideBackDrop();
 }
-function workEnd() {
+function workEnd(afterLogout) {
     if (currentResult) {
         // end timer
         clearTimeout(timeoutID);
@@ -73,7 +73,7 @@ function workEnd() {
             sendResults.push(currentResult);
         }
         if (window.webkit) {
-            window.webkit.messageHandlers.WorkEnd({ "mAccount_Id": "" + loginJson.Result.mAccount.Id + "", "data": "" + JSON.stringify(sendResults) + "", "Transmission": "" + loginJson.Result.mMobileSet.Transmission + "" });
+            window.webkit.messageHandlers.WorkEnd({ "mAccount_Id": "" + loginJson.Result.mAccount.Id + "", "data": "" + JSON.stringify(sendResults) + "", "Transmission": "" + loginJson.Result.mMobileSet.Transmission + "" }, afterLogout);
         }
         currentResult = undefined;
         tempScanResultList = [];
@@ -183,7 +183,7 @@ function setResultStartValue(topText, topVal, groupPeople) {
 // set result end value
 function setResultEndValue(result) {
     result.EndDateTime = getTime();
-    result.Steps = 0;//todo
+    //result.Steps = 0;//todo
     //result.mCustomer_Id = parseInt($(".btn_customer.select").attr("mCustomer_Id"));
     result.InputType = parseInt(loginJson.Result.mMobileSet.InputType);
 

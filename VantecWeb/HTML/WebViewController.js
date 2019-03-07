@@ -98,7 +98,7 @@ class WebViewController {
             workStartCallback(newResultList);
         }
     }
-    WorkEnd(message) {
+    WorkEnd(message, afterLogout) {
         let stepsCount = 0;//StepCounter.Shared.stopPedometerUpdates()
         //
         let dic = message;
@@ -107,16 +107,22 @@ class WebViewController {
         let autoSendDataFlg = dic["Transmission"];
         var tMeasuresList = endResult;
         // set step count
-        $.each(tMeasuresList, function (tmIndex, tmItem) {
-            tmItem.Steps = stepsCount;
-        })
+        //$.each(tMeasuresList, function (tmIndex, tmItem) {
+        //    tmItem.Steps = stepsCount;
+        //})
 
         var postSucess = function (result) {
             //var rr = result
+            if (typeof afterLogout === "function") {
+                afterLogout();
+            }
         }
         var postError = function (error) {
             // save result data to locallist
             saveResultToLocal();
+            if (typeof afterLogout === "function") {
+                afterLogout();
+            }
         }
         var saveResultToLocal = function () {
             let localData = LocalDataHelper.getLocalDataByKey(userId + "_localResults")
