@@ -1,9 +1,9 @@
 class framework{
 	constructor() {
-		//this.serverUrl = "http://192.168.1.35:8070/api/"
+		this.serverUrl = "http://192.168.1.35:8070/api/"
 		//this.serverUrl = "http://ec2-54-199-248-151.ap-northeast-1.compute.amazonaws.com:8089/api/"
 		//this.serverUrl = "https://timebird.vantec-gl.com:8443/api/";//本番
-		this.serverUrl = "https://timebird.vantec-gl.com:7443/api/"//テスト
+		//this.serverUrl = "https://timebird.vantec-gl.com:7443/api/"//テスト
 		this.httpHelper = {
 			httpToken: "",
 			Post: function (url, data, success, failure) {

@@ -53,6 +53,9 @@ function topInit(customerId){
                     if (inputType != 1 && inputFlg != 0) {
                         showCountPage(getTopPage());
                     }
+                    else if (inputFlg === 0) {
+                        pageNavigation("page_group_person_number_edit", getTopPage());
+                    }
                 }
                 //set work kbn name as input page title
                 span_workkbn_names.text(workKBN.DetailType);
