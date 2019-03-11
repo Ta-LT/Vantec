@@ -86,7 +86,7 @@ class WebViewController {
         let newResultList = JSON.parse(dic["newResultList"]);
         let autoSendDataFlg = dic["Transmission"]
         var postSucess = function (result) {
-            let tMeasuresInfo = JSON.parse(result);
+            let tMeasuresInfo = result;
             workStartCallback(tMeasuresInfo.Result);
         }
         var postError = function (error) {

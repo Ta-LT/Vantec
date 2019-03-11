@@ -66,12 +66,12 @@ function workEnd(afterLogout) {
         var sendResults = [];
         if (inputFlg == 1 && tempScanResultList.length > 0 && loginJson.Result.mMobileSet.InputType == 4) {
             // set first scanResult id equel current result id
-            tempScanResultList[0].Id = currentResult.Id
+            //tempScanResultList[0].Id = currentResult.Id
             //set end times for each scan result by tempScanTime
             sendResults = setEndTimeForScanResults();
-        } else {
-            sendResults.push(currentResult);
         }
+        sendResults.push(currentResult);
+
         if (window.webkit) {
             window.webkit.messageHandlers.WorkEnd({ "mAccount_Id": "" + loginJson.Result.mAccount.Id + "", "data": "" + JSON.stringify(sendResults) + "", "Transmission": "" + loginJson.Result.mMobileSet.Transmission + "" }, afterLogout);
         }
@@ -176,7 +176,7 @@ function setResultStartValue(topText, topVal, groupPeople) {
         DelFlg: 0,
         CreateDateTimeStamp: String(Date.now()),//timestamp
         StatusCode: 0,
-        Members: (groupPeople ? groupPeople : 1)
+        Members: (typeof groupPeople != "undefined" && groupPeople != null ? groupPeople : 1)
     }
     return newResultObj;
 }
