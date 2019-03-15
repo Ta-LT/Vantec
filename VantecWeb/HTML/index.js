@@ -78,6 +78,11 @@ function workEnd(afterLogout) {
         currentResult = undefined;
         tempScanResultList = [];
     }
+    else {
+        if (typeof afterLogout === "function") {
+            afterLogout();
+        }
+    }
 }
 function workEndCallback(resultList) {
     //resultList_local.push(resultList[0]);

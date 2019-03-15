@@ -68,7 +68,12 @@ function topInit(customerId){
             })
             if (currentSelectedWorkKbn && currentSelectedWorkKbn.Member === 1) {
                 pageNavigation(getTopPage(), "page_group_person_number_edit");
-                $("#page_group_person_number_edit").data("oncommit",function(groupPeople){
+                $("#page_group_person_number_edit").data("oncommit", function (groupPeople) {
+                    if (!isFirstClick) {
+                        //end current work
+                        workEnd();
+                        workStart(topButtonElements.topButton.text(), parseInt(topButtonElements.topButton.attr("topId")), groupPeople);
+                    }
                     navigateToKbn(groupPeople);
                 });
             }

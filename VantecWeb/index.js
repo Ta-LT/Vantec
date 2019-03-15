@@ -39,7 +39,7 @@ function addNewloginFrame() {
         newUserloginButton.addClass("selected");
         $("#framescontainer iframe").hide();
         $("#framescontainer iframe[userid='" + newUserloginButton.attr("userid") + "']").show();
-        $("#usernamediv").text(newUserloginButton.attr("username"));
+        $("#usernamediv").text(newUserloginButton.text());
     });
     $("#maindiv").append(newUserloginButton);
     var newUserFrame = $("<iframe/>").attr("src", "./HTML/index.html").attr("userid", "");
