@@ -63,7 +63,10 @@ $(function () {
         scanResult.ScanKeyNo = scanKeyNoInput;
         setResultEndValue(scanResult);//end
         createScanResultOnPage(scanResult);
-        tempScanResultList.push(scanResult);
+        //tempScanResultList.push(scanResult);
+        if (window.webkit) {
+            window.webkit.messageHandlers.WorkEnd({ "mAccount_Id": "" + loginJson.Result.mAccount.Id + "", "data": "" + JSON.stringify([scanResult]) + "", "Transmission": "" + loginJson.Result.mMobileSet.Transmission + "" });
+        }
         $(this).val("");
         $(this).blur();
     });

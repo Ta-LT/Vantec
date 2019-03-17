@@ -400,14 +400,17 @@ function showCountPage(pageToHide) {
             break
     }
     function callback(data) {
+        currentResult.InputType = inputType;
         if (inputType == 4) {
             currentResult.ScanKeyNo = data.ScanKeyNo;
         } else if (inputType != 1) {
             currentResult.Number = parseInt(data.Number);
             currentResult.Practical = data.Practical;
             currentResult.mPractical_Id = parseInt(data.mPractical_Id);
+            if (window.webkit) {
+                window.webkit.messageHandlers.WorkEnd({ "mAccount_Id": "" + loginJson.Result.mAccount.Id + "", "data": "" + JSON.stringify([currentResult]) + "", "Transmission": "" + loginJson.Result.mMobileSet.Transmission + "" });
+            }
         }
-        currentResult.InputType = inputType;
     }
 }
 function showBackDrop() {
