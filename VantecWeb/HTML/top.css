@@ -14,6 +14,7 @@
     -o-border-radius: 10px;
     border-radius: 10px;
     position: relative;
+    min-height: 70px;
 }
 
 #page_top .main-btn i {
