@@ -21,7 +21,7 @@ function resetBCCheck() {
     //txt_bc_check_code1_proxy.blur(function(){$(this).focus()})
     btn_cb_check_result.hide();
 }
-function showBCCheckResult(bcCheckCode1, bcCheckCodeDate1, bcCheckCode2, bcCheckCodeDate2) {
+function showBCCheckResult(bcCheckCode1, bcCheckCodeDate1, bcCheckCode2, bcCheckCodeDate2, bcCheckCode1Org, bcCheckCode2Org) {
 
 
     if (bcCheckCode1 === bcCheckCode2) {
@@ -43,7 +43,10 @@ function showBCCheckResult(bcCheckCode1, bcCheckCodeDate1, bcCheckCode2, bcCheck
         StartDateTime1: formateDate(bcCheckCodeDate1),
         Barcode2: bcCheckCode2,
         StartDateTime2: formateDate(bcCheckCodeDate2),
-        Collation: (bcCheckCode1 === bcCheckCode2 ? "OK" : "NG")
+        Collation: (bcCheckCode1 === bcCheckCode2 ? "OK" : "NG"),
+        ScanBarcode1: bcCheckCode1Org,
+        ScanBarcode2: bcCheckCode2Org
+
     }]);
     btn_cb_check_result.show();
 }
@@ -60,6 +63,8 @@ function getChangedVal(bcCheckCode) {
 $(function () {
     var bcCheckCode1;
     var bcCheckCode2;
+    var bcCheckCode1Org;
+    var bcCheckCode2Org;
     var bcCheckCode1Date;
     var bcCheckCode2Date;
     txt_bc_check_code1_proxy.change(function (e) {
@@ -71,7 +76,8 @@ $(function () {
         $(this).val("");
     });
     txt_bc_check_code1.change(function (e) {
-        bcCheckCode1 = $(this).val();
+        bcCheckCode1 = $(this).val().trim();
+        bcCheckCode1Org = bcCheckCode1;
         bcCheckCode1Date = new Date();
         var BcCheck = currentCustomer;
         switch (BcCheck.Pipe1) {
@@ -112,7 +118,8 @@ $(function () {
         showBCCheckResult(bcCheckCode1, bcCheckCode1Date, bcCheckCode2, bcCheckCode2Date);
     });
     txt_bc_check_code2.change(function (e) {
-        bcCheckCode2 = $(this).val();
+        bcCheckCode2 = $(this).val().trim();
+        bcCheckCode2Org = bcCheckCode2;
         bcCheckCode2Date = new Date();
 
         var BcCheck = currentCustomer;
@@ -144,7 +151,7 @@ $(function () {
             default:
                 break;
         }
-        showBCCheckResult(bcCheckCode1, bcCheckCode1Date, bcCheckCode2, bcCheckCode2Date);
+        showBCCheckResult(bcCheckCode1, bcCheckCode1Date, bcCheckCode2, bcCheckCode2Date, bcCheckCode1Org, bcCheckCode2Org);
     });
     txt_bc_check_code1_proxy.on('input', function () {
         txt_bc_check_code1.val(this.value);
