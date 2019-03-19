@@ -33,7 +33,7 @@ function subframeLogedout(username, frameElement, userid) {
     }
 }
 function addNewloginFrame() {
-    var newUserloginButton = $("<button type='button'/>").addClass("user").text("Login New User").attr("userid", "");
+    var newUserloginButton = $("<button type='button'/>").addClass("user").text("New User").attr("userid", "");
     newUserloginButton.click(function () {
         $(".user").removeClass("selected");
         newUserloginButton.addClass("selected");
