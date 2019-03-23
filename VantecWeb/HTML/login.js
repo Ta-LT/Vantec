@@ -166,6 +166,8 @@ jQuery(document).ready(function () {
     $('#m_login_signin_submit').click(function (e) {
         var _this = this;
         login(_this);
+        //playLocalAutio("ok.mp3");
+        
         //if (!parent.window.subframeLogedin($("#txt_userid").val(), $(window.frameElement))) {
         //    var userimg = $("<img/>").attr("src", "../workingpic.png").attr("usemap", "#planetmap").css({
         //        "height": "100%",

@@ -73,3 +73,7 @@
 #page_customer .btn.m-btn--pill {
     border-radius:5px;
 }
+#page_customer .main-btn-inner p {
+    margin-top: 0;
+    margin-bottom: 0;
+}

@@ -5,10 +5,10 @@ var sp_count_scantype_edit_title = $("#sp_count_scantype_edit_title");
 var count_scantype_edit_callback;
 var customerForEdit;
 function setCountScanTypeEditValue(result,callback){
-    txt_count_scantype_edit_text.val(result.ScanKeyNo);
-    txt_count_scantype_edit_text_proxy.val("");
-    txt_count_scantype_edit_text_proxy.focus();
-    txt_count_scantype_edit_text_proxy.blur(function(){$(this).focus()})
+    txt_count_scantype_edit_text.val("");
+    //txt_count_scantype_edit_text_proxy.val("");
+    txt_count_scantype_edit_text.focus();
+    //txt_count_scantype_edit_text_proxy.blur(function(){$(this).focus()})
     var customers = loginJson.Result.mCustomer.filter(function(customer) {
                                                     return customer.Id == result.mCustomer_Id;
                                                })
@@ -19,11 +19,11 @@ function setCountScanTypeEditValue(result,callback){
 }
 function getCountScanTypeEditValue(){
     return {
-        ScanKeyNo:txt_count_scantype_edit_text_proxy.val()
+        ScanKeyNo:txt_count_scantype_edit_text.val()
     }
 }
 $(function () {
-  txt_count_scantype_edit_text_proxy.change(function(e){
+  txt_count_scantype_edit_text.change(function(e){
     var scanKeyNoInput = $(this).val();
     if(customerForEdit.BarcodeNumMax == 0 && customerForEdit.BarcodeNumMin == 0){
         if(scanKeyNoInput.length > 20){
@@ -44,7 +44,7 @@ $(function () {
     $("#btn_close_count_scantype_edit").click();
   });
   txt_count_scantype_edit_text_proxy.on('input', function() {
-    $("#txt_count_scantype_edit_text").val(this.value);
+    //$("#txt_count_scantype_edit_text").val(this.value);
   });
   //go back to top page
   $("#btn_close_count_scantype_edit").click(function(e){

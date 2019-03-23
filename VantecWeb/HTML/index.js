@@ -521,5 +521,5 @@ function formateDate(date) {
 
 }
 $(function () {
-
+    //$(".m-login__logo").text(navigator.userAgent);
 });

@@ -229,8 +229,9 @@ class WebViewController {
         let alarmCode = dic["code"];
         let playTimes = dic["playTimes"];
         //SoundPlayer.Shared.playSystemSound(soundID: alarmCode!, playTimes: playTimes!, completion: playCompletion);
-        $("#mainalarm").attr("src", "./Audio/ok.mp3");
-        $("#mainalarm")[0].play();
+        //$("#mainalarm").attr("src", "./Audio/ok.mp3");
+        //$("#mainalarm")[0].play();
+        okSound.play();
     }
     DailyOutputClick(message) {
         let dic = message;
@@ -270,8 +271,21 @@ class WebViewController {
     PlayLocalAudio(message) {
         let dic = message;
         let fileName = dic["fileName"];
-        $("#mainalarm").attr("src", "./Audio/" + fileName);
-        $("#mainalarm")[0].play();
+        //$("#mainalarm").attr("src", "./Audio/" + fileName);
+        //$("#mainalarm")[0].play();
+        switch (fileName.toLowerCase()) {
+            case "ok.mp3":
+                okSound.play();
+                break;
+            case "ng.mp3":
+                ngSound.play();
+                break;
+            case "alert.mp3":
+                alertSound.play();
+                break;
+            default:
+                alert("Sound not found.")
+        }
     }
 }
 class LocalDataHelper {
