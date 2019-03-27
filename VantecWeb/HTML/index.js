@@ -522,4 +522,25 @@ function formateDate(date) {
 }
 $(function () {
     //$(".m-login__logo").text(navigator.userAgent);
+    window.onload = function () {
+        // ページ読み込みと同時にロード
+        wa.loadFile('./Audio/ok.mp3', function (buffer) {
+
+            // ユーザーイベント
+            var event = 'click';
+            $('#m_login_signin_submit').click(function (e) {
+                wa.playSilent();
+            });
+            //document.getElementById("aaa").addEventListener(event, function () {
+            //    wa.playSilent();
+            //});
+            // document.getElementById("abc").addEventListener('change', function () {
+
+            //     wa.loadFile('./ok.mp3', function () {
+            //         wa.play('ok.mp3');
+            //     });
+            // });
+        });
+
+    }
 });

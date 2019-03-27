@@ -64,8 +64,12 @@
     <Content Include="HTML\framework.js" />
     <Content Include="HTML\group_person_number_input.css" />
     <Content Include="HTML\group_person_number_input.js" />
+    <Content Include="HTML\wa.js" />
     <Content Include="HTML\WebAudioAPISound.js" />
     <Content Include="HTML\WebViewController.js" />
+    <Content Include="ng.mp3" />
+    <Content Include="ok.mp3" />
+    <Content Include="test.html" />
     <Content Include="VantecSwift\.DS_Store" />
     <Content Include="VantecSwift\Base.lproj\Main.storyboard" />
     <Content Include="VantecSwift\Controllers\WebViewController.swift" />
@@ -134,6 +138,7 @@
     <Content Include="HTML\assets\vendors\base\fonts\summernote\summernote.eot" />
     <Content Include="HTML\assets\vendors\base\fonts\summernote\summernote.ttf" />
     <Content Include="HTML\assets\vendors\base\fonts\summernote\summernote.woff" />
+    <Content Include="wa.js" />
     <Content Include="workingpic.png" />
     <Content Include="VantecSwift\HTML\framework.js" />
     <Content Include="VantecSwift\HTML\WebViewController.js" />

@@ -1,0 +1,53 @@
+﻿<html>
+<body>
+    <h2>ページ読み込みと同時にロード、タップイベントに無音再生＆非同期処理をはさんで再生</h2>
+    <ul>
+        <li>iOS： 画面タップ（クリック）で再生</li>
+        <li>Google Chrome 71+： 画面タップ（クリック）で再生</li>
+        <li>Firefox, MS Edge, etc.： 画面タップ（クリック）で再生</li>
+        <input type="text" id="abc" />
+        <button id="aaa">aaaaaa</button>
+    </ul>
+    <script src="./wa.js"></script>
+    <script type="text/javascript">
+    var t;
+    window.onload = function() {
+      // ページ読み込みと同時にロード
+      wa.loadFile('./ok.mp3', function(buffer) {
+
+        // ユーザーイベント
+        var event = 'click';
+        document.getElementById("aaa").addEventListener(event, function() {
+          wa.playSilent();
+          t = window.setTimeout("play()", 5000);
+        });
+          // document.getElementById("abc").addEventListener('change', function () {
+
+          //     wa.loadFile('./ok.mp3', function () {
+          //         wa.play('ok.mp3');
+          //     });
+          // });
+      });
+
+    }
+    function play() {
+              wa.loadFile('./ng.mp3', function () {
+                  wa.play('ng.mp3');
+              });
+      // var o=document.getElementById("abc");
+      // o.focus();
+      // o.value=Math.round(new Date().getTime()/1000).toString();
+      // if ("createEvent" in document) {
+      //   var evt = document.createEvent("HTMLEvents");
+      //   evt.initEvent("change", false, true);
+      //   o.dispatchEvent(evt);
+      // } else {
+      //   o.fireEvent("onchange");
+      // }
+      // clearTimeout(t);
+    }
+
+    </script>
+</body>
+
+</html>

@@ -1523,7 +1523,7 @@
     <script src="top_edit.js" type="text/javascript"></script>
     <script src="group_person_number_input.js" type="text/javascript"></script>
     <script src="WebViewController.js" type="text/javascript"></script>
-    <script src="WebAudioAPISound.js" type="text/javascript"></script>
+    <!--<script src="WebAudioAPISound.js" type="text/javascript"></script>-->
     <script type="text/javascript">
         if (!window.webkit) {
             window.webkit = { messageHandlers: new WebViewController() };
@@ -1531,10 +1531,11 @@
         else {
             window.webkit.messageHandlers = new WebViewController();
         }
-        var okSound = new WebAudioAPISound("./audio/ok.mp3");
-        var ngSound = new WebAudioAPISound("./audio/ng.mp3");
-        var alertSound = new WebAudioAPISound("./audio/alert.mp3");
+        //var okSound = new WebAudioAPISound("./audio/ok.mp3");
+        //var ngSound = new WebAudioAPISound("./audio/ng.mp3");
+        //var alertSound = new WebAudioAPISound("./audio/alert.mp3");
     </script>
+    <script src="wa.js"></script>
 </body>
 	<!-- end::Body -->
 </html>
